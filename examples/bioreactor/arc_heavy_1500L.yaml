@@ -1,0 +1,80 @@
+id: bioreactor_1500l_osmostatic_v1
+display_name: JP7 Modular Osmostatic Bioreactor (1500L)
+description: >
+  A fully instrumented, open-loop 1500L stainless steel bioreactor designed for osmostatic fermentation and bioindustrial process control.
+  Capable of automated modulation, real-time logging, and integration into lab-scale production pipelines.
+version: 1.0
+
+vessel:
+  shape: cube
+  volume_l: 1500
+  drain:
+    type: inverted_pyramid
+    powered: true
+    metered: true
+  construction:
+    material: stainless_steel
+    thickness_mm: 3
+    double_wall: true
+    jacketed: true
+    bracing:
+      internal: true
+      external: true
+      mounting: carriage_mount
+
+access:
+  feed_ports:
+    - name: glucose_syrup
+      type: fluid
+    - name: liquid_malt
+      type: ingredient
+    - name: distilled_diluent
+      type: fluid
+  co2_port: true
+  oxygenation_port: true
+  sample_port: true
+  sanitation:
+    spray_nozzles_internal: true
+    fire_suppression_inert_gas: true
+
+agitation:
+  surface_blade: true
+  sparging: true
+
+visual_inspection:
+  cameras:
+    count: 2
+    modes: [live_stream, frame_capture]
+  viewport: true
+  led_lighting:
+    - position: overhead
+    - position: side_through_must
+    - position: viewport_backlight
+
+instrumentation:
+  sensors:
+    - pH
+    - osmolality
+    - temperature
+    - tds
+    - gravity
+    - abv
+  sample_resolution_minutes: 1
+
+network:
+  onboard_computer:
+    type: sbc_linux
+    connectivity: [cat6, wifi]
+    display: minimal_lcd
+    control_interface: cli_rpc
+    logging_output: kafka_stream
+    dashboard: grafana_compatible
+
+mounting:
+  floor_mounted: true
+  automation_ready: true
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25
+

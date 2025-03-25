@@ -1,0 +1,7 @@
+id: cube_fermenter_10l_v1
+vessel_volume_l: 10
+drain_type: inverted_pyramid
+sensors:
+  - sg
+  - pH
+  - osmolality
