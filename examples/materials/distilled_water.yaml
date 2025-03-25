@@ -1,0 +1,46 @@
+id: distilled_water_generic_v1
+display_name: Distilled Water
+description: >
+  Pure H₂O with negligible mineral content. Produced via condensation after boiling, leaving behind non-volatile impurities.
+  Commonly used to dilute high-osmolality musts, prepare solutions, or serve as a base medium in fermentation.
+type: liquid.water.purified
+display_grade: reagent
+target_application: general_dilution
+form: liquid
+usage_form: direct
+version: 1.0
+
+chemical_profile:
+  osmotic_contribution_g_per_l: 0.0
+  pH_effect_range: [6.8, 7.0]
+  buffer_capacity: none
+  alcohol_solubility: universal
+  water_solubility: universal
+  volatile_compounds: []
+  nutrient_load:
+    n_p_ratio: 0.0
+    trace_minerals: []
+
+biological_profile:
+  enzymatic_activity: none
+  microbial_load: sterile
+  antimicrobial_properties: none
+
+sensory_profile:
+  color_srm: 0
+  flavor_notes:
+    - neutral
+  mouthfeel: neutral
+
+supplier:
+  manufacturer: Generic
+  product_name: Distilled Water
+  sku: H2O-1000ML
+  origin_country: Varies
+  batch_number: null
+  certs: [lab-grade, food-grade]
+
+license: CC0-1.0
+contributor: janearc
+date_created: 2025-03-25
+

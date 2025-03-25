@@ -1,0 +1,58 @@
+id: umami_persimmon_skin_miso_mash_v1
+display_name: Umami Persimmon Skin Miso Mash
+description: >
+  A savory, enzymatically rich paste made from fermented persimmon skins, white rice miso, and roasted barley koji.
+  Slow-aged to develop high glutamate content and complex umami-laden aroma. Typically used as a catalytic flavor base
+  or inoculant substrate in experimental fermentation.
+type: mash.fermented.koji.fruit
+form: paste
+preparation:
+  method: natural_fermentation
+  time_days: 90
+  temp_c: 21
+usage_form: enzymatic_starter
+version: 1.0
+
+chemical_profile:
+  osmotic_contribution_g_per_l: 24.7
+  pH_effect_range: [4.2, 4.6]
+  buffer_capacity: medium
+  alcohol_solubility: low
+  water_solubility: partial
+  volatile_compounds:
+    - compound: glutamic_acid
+      aroma: savory, mouthwatering
+    - compound: methyl_furan
+      aroma: caramelized, earthy
+    - compound: ethyl_hexanoate
+      aroma: sweet, fruity
+  nutrient_load:
+    n_p_ratio: 7.5
+    trace_minerals: [K, Mg, Ca]
+
+biological_profile:
+  enzymatic_activity: high
+  microbial_load: intentional (koji, lactobacillus, wild yeast)
+  antimicrobial_properties: moderate (acidic, enzymatic suppression of spoilage flora)
+
+sensory_profile:
+  color_srm: 90
+  flavor_notes:
+    - soy
+    - ripe persimmon
+    - dry porcini
+    - toasted miso
+  mouthfeel: thick, glossy
+
+supplier:
+  manufacturer: Handmade, single-origin batch
+  product_name: Persimmon Skin Miso Mash
+  sku: n/a
+  origin_country: USA
+  batch_number: PSM-2025-001
+  certs: [none]
+
+license: CC-BY-NC-4.0
+contributor: janearc
+date_created: 2025-03-25
+

@@ -1,0 +1,44 @@
+id: fermaid_o_lallemand_v1
+display_name: Fermaid O
+description: >
+  A popular organic yeast nutrient blend composed primarily of autolyzed yeast. Supplies nitrogen, vitamins, and minerals
+  in a bioavailable form to support healthy fermentation. Often used in mead, cider, and high-gravity wine fermentations.
+type: additive.nutrient.yeast
+form: powder
+target_application: primary_fermentation
+usage_form: dry_dose
+version: 1.0
+
+chemical_profile:
+  osmotic_contribution_g_per_l: 0.0
+  pH_effect_range: [6.7, 6.8]
+  buffer_capacity: low
+  alcohol_solubility: n/a
+  water_solubility: high
+  volatile_compounds: []
+  nutrient_load:
+    n_p_ratio: 3.6
+    trace_minerals: [Mg, Zn, Cu, Fe]
+
+biological_profile:
+  enzymatic_activity: none
+  microbial_load: sterile
+  antimicrobial_properties: none
+
+sensory_profile:
+  color_srm: 2
+  flavor_notes:
+    - neutral
+  mouthfeel: none
+
+supplier:
+  manufacturer: Lallemand
+  product_name: Fermaid O
+  sku: FMDO-500G
+  origin_country: Canada
+  batch_number: optional
+  certs: [organic, winemaking-approved]
+
+license: CC-BY-4.0
+contributor: janearc
+date_created: 2025-03-25

@@ -1,0 +1,53 @@
+id: midnight_wheat_cold_steeped_v1
+display_name: Midnight Wheat (Cold-Steeped)
+description: >
+  A dark roasted malted wheat grain, cold-steeped for 24 hours to reduce tannin extraction.
+  Adds deep roast color and soft bitterness without enzymatic activity.
+type: grain.malted.wheat.roasted
+form: crushed
+preparation:
+  method: cold_steep
+  time_hours: 24
+  temp_c: 4
+usage_form: steeped_extract
+version: 1.0
+
+chemical_profile:
+  osmotic_contribution_g_per_l: 16.2
+  pH_effect_range: [5.1, 5.3]
+  buffer_capacity: low
+  alcohol_solubility: N/A
+  water_solubility: high
+  volatile_compounds:
+    - compound: furfural
+      aroma: nutty, roasted
+    - compound: guaiacol
+      aroma: smoky, spicy
+  nutrient_load:
+    n_p_ratio: 4.2
+    trace_minerals: [Fe, Mn, Zn]
+
+biological_profile:
+  enzymatic_activity: none
+  microbial_load: negligible
+  antimicrobial_properties: weak
+
+sensory_profile:
+  color_srm: 550
+  flavor_notes:
+    - cocoa
+    - coffee
+    - subtle burnt sugar
+  mouthfeel: thickening
+
+supplier:
+  manufacturer: Briess Malt & Ingredients Co.
+  product_name: Midnight Wheat Malt
+  sku: BW-MWM-001
+  origin_country: USA
+  batch_number: null
+  certs: [organic, kosher]
+
+license: CC-BY-NC-4.0
+contributor: janearc
+date_created: 2025-03-25

@@ -1,0 +1,56 @@
+id: champagne_yeast_lalvin_ec1118_v1
+display_name: Champagne Yeast (Lalvin EC-1118)
+description: >
+  A robust Saccharomyces cerevisiae bayanus strain known for its strong fermentation kinetics and high alcohol tolerance.
+  Commonly used in sparkling wine, cider, and osmostatic fermentations due to its neutral profile and survivability.
+type: biomass.yeast.saccharomyces
+form: dry_granule
+target_application: primary_fermentation
+usage_form: rehydrated
+version: 1.0
+
+chemical_profile:
+  osmotic_contribution_g_per_l: 0.0
+  pH_effect_range: [3.3, 4.2]
+  buffer_capacity: negligible
+  alcohol_solubility: tolerant
+  water_solubility: n/a
+  volatile_compounds:
+    - compound: ethyl_acetate
+      aroma: fruity
+    - compound: isoamyl_alcohol
+      aroma: solventy
+  nutrient_load:
+    n_p_ratio: n/a
+    trace_minerals: []
+
+biological_profile:
+  enzymatic_activity: metabolic_only
+  microbial_load: active
+  antimicrobial_properties: competitive (killer factor present)
+  strain_id: EC-1118
+  alcohol_tolerance_percent: 18
+  fermentation_temperature_c: [10, 30]
+  osmotolerance_g_per_l: 320
+  flocculation: low
+
+sensory_profile:
+  color_srm: 0
+  flavor_notes:
+    - neutral
+    - crisp
+    - subtle apple
+  mouthfeel: dry
+
+supplier:
+  manufacturer: Lallemand / Lalvin
+  product_name: EC-1118
+  sku: EC1118-5G
+  origin_country: Canada
+  batch_number: optional
+  certs: [oenological, commercial_yeast]
+
+license: CC-BY-4.0
+contributor: janearc
+date_created: 2025-03-25
+

@@ -1,0 +1,44 @@
+id: granulated_sugar_cane_usda_v1
+display_name: Granulated Cane Sugar
+description: >
+  Crystalline sucrose derived from sugarcane. Highly soluble and a primary carbon source for fermentation.
+  Used to increase osmotic pressure, fuel yeast metabolism, or induce osmolock in bioreactors.
+type: additive.carbohydrate.sucrose
+form: crystalline
+usage_form: dry_dose
+version: 1.0
+
+chemical_profile:
+  osmotic_contribution_g_per_l: 1000
+  pH_effect_range: [6.9, 7.1]
+  buffer_capacity: none
+  alcohol_solubility: n/a
+  water_solubility: high
+  volatile_compounds: []
+  nutrient_load:
+    n_p_ratio: 0.0
+    trace_minerals: []
+
+biological_profile:
+  enzymatic_activity: none
+  microbial_load: sterile
+  antimicrobial_properties: none
+
+sensory_profile:
+  color_srm: 1
+  flavor_notes:
+    - sweet
+    - neutral
+  mouthfeel: none
+
+supplier:
+  manufacturer: USDA Commodity Spec
+  product_name: Cane Sugar, Granulated
+  sku: SUGAR-GR-01
+  origin_country: USA
+  batch_number: null
+  certs: [food-grade]
+
+license: CC0-1.0
+contributor: janearc
+date_created: 2025-03-25

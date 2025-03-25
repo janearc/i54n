@@ -1,0 +1,53 @@
+id: basic_seltzer_8_percent_v1
+display_name: Basic Sugar Wash Hard Seltzer (8%)
+description: >
+  A simple, clean-fermenting hard seltzer base using champagne yeast and cane sugar.
+  Designed for rapid fermentation, CO₂ scrubbing during primary, and post-fermentation force carbonation.
+version: 1.0
+
+recipe:
+  target_product:
+    type: beverage.seltzer.base
+    abv_target_percent: 8.0
+    final_gravity: 1.000
+
+  biomass:
+    material_ref: champagne_yeast_lalvin_ec1118_v1
+    pitch_rate_g_per_l: 0.5
+
+  ingredients:
+    - material_ref: granulated_sugar_cane_usda_v1
+      mass_g: 80
+      target_volume_l: 1.0
+      dissolve: true
+
+    - material_ref: distilled_water_generic_v1
+      volume_l: 1.0
+      notes: dissolve sugar fully before pitching yeast
+
+  tolerances:
+    temp_c: [18, 25]
+    pH: [3.2, 4.2]
+    osmotic_pressure_g_per_l: 100
+
+  catalysts: []
+
+  controls:
+    - type: co2_scrubbing
+      stage: primary
+      duration_days: 7
+    - type: force_carbonation
+      pressure_psi: 25
+      temp_c: 1
+      duration_hours: 48
+
+logging:
+  enabled: true
+  interval_minutes: 60
+  fingerprint_compare: false
+  notes: "Intended as a schema baseline test for JP7 interface compliance."
+
+license: CC0-1.0
+contributor: janearc
+date_created: 2025-03-25
+

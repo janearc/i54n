@@ -1,0 +1,92 @@
+type: object
+required:
+  - id
+  - display_name
+  - type
+  - form
+  - usage_form
+  - chemical_profile
+  - biological_profile
+  - sensory_profile
+  - supplier
+properties:
+  id:
+    type: string
+  display_name:
+    type: string
+  description:
+    type: string
+  type:
+    type: string
+  form:
+    type: string
+  preparation:
+    type: object
+    properties:
+      method: { type: string }
+      time_hours: { type: number }
+      temp_c: { type: number }
+  usage_form:
+    type: string
+  version:
+    type: string
+
+  chemical_profile:
+    type: object
+    properties:
+      osmotic_contribution_g_per_l: { type: number }
+      pH_effect_range:
+        type: array
+        items: { type: number }
+        minItems: 2
+        maxItems: 2
+      buffer_capacity: { type: string }
+      alcohol_solubility: { type: string }
+      water_solubility: { type: string }
+      volatile_compounds:
+        type: array
+        items:
+          type: object
+          properties:
+            compound: { type: string }
+            aroma: { type: string }
+      nutrient_load:
+        type: object
+        properties:
+          n_p_ratio: { type: number }
+          trace_minerals:
+            type: array
+            items: { type: string }
+
+  biological_profile:
+    type: object
+    properties:
+      enzymatic_activity: { type: string }
+      microbial_load: { type: string }
+      antimicrobial_properties: { type: string }
+
+  sensory_profile:
+    type: object
+    properties:
+      color_srm: { type: number }
+      flavor_notes:
+        type: array
+        items: { type: string }
+      mouthfeel: { type: string }
+
+  supplier:
+    type: object
+    properties:
+      manufacturer: { type: string }
+      product_name: { type: string }
+      sku: { type: string }
+      origin_country: { type: string }
+      batch_number: { type: string }
+      certs:
+        type: array
+        items: { type: string }
+
+  license: { type: string }
+  contributor: { type: string }
+  date_created: { type: string, format: date }
+
