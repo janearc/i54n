@@ -1,0 +1,41 @@
+id: ncp_poll_v1
+display_name: Node Control Protocol - Poll Request
+version: 1.0
+description: >
+  Defines a control-layer request used to query the current state of a node, including readiness,
+  health, capacity, or active job metadata. This is distinct from a stat_emit, as it is explicitly requested
+  by a controller or orchestrator. The node replies with an `ncp_response`.
+
+schema:
+  transaction_guid:
+    type: string
+    format: uuid
+    description: Unique transaction ID for correlation with the response
+
+  origin_guid:
+    type: string
+    format: uuid
+    description: GUID of the system issuing the poll
+
+  node_guid:
+    type: string
+    format: uuid
+    description: GUID of the target node being polled
+
+  timestamp_utc:
+    type: string
+    format: date-time
+    description: ISO 8601 UTC timestamp of when the poll was generated
+
+  fields:
+    type: array
+    description: Optional list of node fields to query (e.g., "status", "volume_l", "uptime")
+    items:
+      type: string
+
+example:
+  transaction_guid: "994ac25b-bbd1-4892-8e3c-d30be7f58f34"
+  origin_guid: "controller-alpha-001"
+  node_guid: "jp7-reactor-a01"
+  timestamp_utc: "2025-03-26T00:07:45Z"
+  fields: ["status", "uptime", "active_material"]

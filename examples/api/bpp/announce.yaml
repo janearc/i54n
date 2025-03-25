@@ -1,0 +1,93 @@
+id: bpp_announce_capabilities_v1
+display_name: Bioprocess Backplane Protocol - Announce Capabilities
+version: 1.0
+description: >
+  Broadcast or directed packet used by a node to declare its operational identity, available commands, sensor loadout,
+  and capability endpoints. Typically sent at startup, reconfiguration, or on request by a controller.
+
+schema:
+  node_id:
+    type: string
+    description: Human-readable node identifier
+
+  node_guid:
+    type: string
+    format: uuid
+    description: Globally unique ID for the node
+
+  timestamp_utc:
+    type: string
+    format: date-time
+    description: ISO 8601 UTC timestamp of announcement generation
+
+  manifest_ref:
+    type: string
+    format: uri
+    description: URL or file path pointing to the YAML definition of the node (e.g. on GitHub or internal service)
+
+  location:
+    type: string
+    description: Optional human-readable physical or logical location of the node (e.g., "fermentation bay A", "rack 3")
+
+  endpoints:
+    type: object
+    description: Map of exposed capabilities and their associated API or RPC endpoints
+    example:
+      control: "/ncp/control"
+      status: "/ncp/status"
+      stream: "/kafka/arc-heavy-1500L"
+      poll: "/ncp/poll"
+
+  capabilities:
+    type: object
+    properties:
+      actions:
+        type: array
+        items: { type: string }
+        example: ["inject", "vent", "heat", "cool", "stir", "log"]
+
+      sensors:
+        type: array
+        items: { type: string }
+        example: ["pH", "osmolality", "temperature", "tds", "gravity", "abv"]
+
+      ports:
+        type: array
+        items: { type: string }
+        example: ["glucose_syrup", "liquid_malt", "distilled_diluent", "co2_port", "oxygenation_port", "sample_port"]
+
+      max_volume_l:
+        type: number
+        example: 1500
+
+  current_status:
+    type: object
+    description: Optional real-time snapshot of node status (e.g. active recipe, uptime, etc.)
+    properties:
+      uptime_sec: { type: integer }
+      active_job: { type: string }
+      firmware_version: { type: string }
+      status: { type: string, enum: [ok, degraded, fail] }
+
+example:
+  node_id: "arc-heavy-1500L"
+  node_guid: "ecafae11-9e9f-4569-91d1-f349d155dada"
+  timestamp_utc: "2025-03-26T00:18:50Z"
+  manifest_ref: "https://github.com/janearc/cooking/blob/master/recipes/brewing/examples/bioreactor/arc_heavy_1500L.yaml"
+  location: "lab-bay-3"
+  endpoints:
+    control: "/ncp/control"
+    status: "/ncp/status"
+    stream: "/kafka/arc-heavy-1500L"
+    poll: "/ncp/poll"
+  capabilities:
+    actions: ["inject", "heat", "cool", "vent", "stir", "log"]
+    sensors: ["pH", "osmolality", "temperature", "tds", "gravity", "abv"]
+    ports: ["glucose_syrup", "liquid_malt", "distilled_diluent", "co2_port", "oxygenation_port", "sample_port"]
+    max_volume_l: 1500
+  current_status:
+    uptime_sec: 182930
+    active_job: "m7x-ferment-14"
+    firmware_version: "v1.3.2"
+    status: "ok"
+

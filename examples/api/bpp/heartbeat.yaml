@@ -1,0 +1,51 @@
+id: bpp_heartbeat_v1
+display_name: Bioprocess Backplane Protocol - Heartbeat
+version: 1.0
+description: >
+  A lightweight broadcast or directed packet emitted periodically by any BPP-compatible node, service,
+  or orchestrator to indicate presence, network availability, and baseline responsiveness.
+  Uses the standard BPP message container with a `heartbeat` action payload.
+
+schema:
+  origin_guid:
+    type: string
+    format: uuid
+    description: Globally unique ID of the node or sender emitting the heartbeat
+
+  destination_guid:
+    type: string
+    format: uuid
+    description: GUID of the intended recipient or group. Can be "broadcast" or "multicast:group-name"
+
+  timestamp_utc:
+    type: string
+    format: date-time
+    description: ISO 8601 timestamp of when the heartbeat was generated
+
+  command:
+    type: object
+    required: [action]
+    properties:
+      action:
+        type: string
+        const: "heartbeat"
+        description: Indicates that this packet is a heartbeat signal
+      parameters:
+        type: object
+        description: Optional payload extensions (e.g. load, status)
+        properties:
+          node_uptime_sec: { type: integer }
+          node_health: { type: string, enum: [ok, degraded, fail] }
+          last_seen: { type: string, format: date-time }
+
+example:
+  origin_guid: "3b9d33c2-f3a0-4a4c-a1d9-85c27d95f109"
+  destination_guid: "broadcast"
+  timestamp_utc: "2025-03-25T23:41:00Z"
+  command:
+    action: "heartbeat"
+    parameters:
+      node_uptime_sec: 452330
+      node_health: "ok"
+      last_seen: "2025-03-25T23:40:58Z"
+

@@ -1,0 +1,52 @@
+id: bpp_message_container_v1
+display_name: Bioprocess Backplane Protocol - Message Container
+version: 1.0
+description: >
+  Defines the core message envelope for communication between bioprocessing nodes, services, and control interfaces
+  in the Bioprocess Backplane Protocol (BPP). This container structure is used for all node-directed control and monitoring traffic.
+
+schema:
+  origin_guid:
+    type: string
+    format: uuid
+    description: Globally unique ID for the sending node or client
+
+  destination_guid:
+    type: string
+    format: uuid
+    description: Globally unique ID for the target node or service
+
+  transaction_guid:
+    type: string
+    format: uuid
+    description: Unique ID for this specific transaction, allowing correlation and deduplication
+
+  timestamp_utc:
+    type: string
+    format: date-time
+    description: ISO 8601 timestamp of message creation at origin
+
+  signature:
+    type: string
+    format: base64
+    description: Optional cryptographic signature payload for message integrity and auth
+
+  command:
+    type: object
+    description: Command payload containing a valid instruction for the target node
+    properties:
+      action: { type: string, example: "inject" }
+      parameters: { type: object }
+
+example:
+  origin_guid: "c9d23a50-4f79-4d77-84db-72346be1b7ec"
+  destination_guid: "f402cf8e-f725-4de2-bf9f-eacdba9f6ef6"
+  transaction_guid: "1a0917d3-8d60-41e2-9c18-9b4e3ea7c928"
+  timestamp_utc: "2025-03-25T23:11:14Z"
+  signature: "MEUCIF9vKslrJ...=="
+  command:
+    action: "inject"
+    parameters:
+      material_ref: "distilled_water_generic_v1"
+      volume_l: 0.25
+

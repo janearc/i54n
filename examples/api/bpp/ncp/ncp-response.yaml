@@ -1,0 +1,53 @@
+id: ncp_response_v1
+display_name: Node Control Protocol - Action Response
+version: 1.0
+description: >
+  Defines the standard response payload for any action executed under the Node Control Protocol (NCP).
+  Returned via callback or direct message as specified in the initiating command payload.
+
+schema:
+  transaction_guid:
+    type: string
+    format: uuid
+    description: GUID of the original action message for correlation
+
+  status:
+    type: string
+    enum: [acknowledged, success, error, rejected, timeout]
+    description: Result of the requested action
+
+  timestamp_utc:
+    type: string
+    format: date-time
+    description: Timestamp of response generation
+
+  node_guid:
+    type: string
+    format: uuid
+    description: GUID of the responding node
+
+  result:
+    type: object
+    description: Optional data returned by the action (e.g., sensor values, observed changes)
+    example:
+      confirmed_volume_l: 0.25
+      final_gravity: 1.062
+      internal_temp_c: 23.9
+
+  error:
+    type: object
+    description: Present only if status is "error" or "rejected"
+    example:
+      code: "INVALID_MATERIAL_REF"
+      message: "The specified material_ref could not be located in the fluid registry."
+
+example:
+  transaction_guid: "1a0917d3-8d60-41e2-9c18-9b4e3ea7c928"
+  status: "success"
+  timestamp_utc: "2025-03-25T23:59:12Z"
+  node_guid: "jp7-reactor-a01"
+  result:
+    confirmed_volume_l: 0.25
+    final_gravity: 1.062
+    internal_temp_c: 23.9
+

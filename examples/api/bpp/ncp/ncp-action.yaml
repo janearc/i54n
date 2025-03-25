@@ -1,0 +1,45 @@
+id: ncp_action_v1
+display_name: Node Control Protocol - Action Payload
+version: 1.0
+description: >
+  Defines a valid node-bound control action in the Node Control Protocol (NCP).
+  These payloads are embedded within BPP message containers and direct the target node to perform a specific operation.
+
+schema:
+  action:
+    type: string
+    description: Canonical command to be executed by the node
+    example: "inject"
+
+  parameters:
+    type: object
+    description: Key-value map of parameters required for the action. Contents vary by action type.
+    example:
+      material_ref: "distilled_water_generic_v1"
+      volume_l: 0.25
+      port: "fluid_inlet_01"
+
+  constraints:
+    type: object
+    description: Optional runtime constraints for safety or verification.
+    example:
+      max_pressure_kpa: 200
+      temperature_range_c: [20, 26]
+      timeout_sec: 30
+
+  callback:
+    type: string
+    format: uri
+    description: Optional HTTP/S endpoint for asynchronous postback/acknowledgment
+    example: "https://labnet.local/callbacks/reactor-a01"
+
+example:
+  action: "inject"
+  parameters:
+    material_ref: "distilled_water_generic_v1"
+    volume_l: 0.25
+    port: "fluid_inlet_01"
+  constraints:
+    temperature_range_c: [22, 26]
+    timeout_sec: 60
+  callback: "https://biolab.lan/callbacks/ncp-ack"

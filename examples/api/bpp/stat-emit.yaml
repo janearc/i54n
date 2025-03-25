@@ -1,0 +1,65 @@
+id: bpp_stat_emit_v1
+display_name: Bioprocess Backplane Protocol - Stat Emit
+version: 1.0
+description: >
+  Periodic or event-driven metric broadcast from BPP-compatible nodes. Emitted independently of command/response traffic.
+  Used to publish ongoing sensor values, system status, or metric changes to the bioreactor mesh.
+
+schema:
+  origin_guid:
+    type: string
+    format: uuid
+    description: Globally unique ID of the sending node or subsystem
+
+  destination_guid:
+    type: string
+    format: uuid
+    description: GUID of intended recipient or multicast group (e.g., "stat-consumers")
+
+  timestamp_utc:
+    type: string
+    format: date-time
+    description: ISO 8601 timestamp of stat transmission
+
+  command:
+    type: object
+    required: [action, parameters]
+    properties:
+      action:
+        type: string
+        const: "stat_emit"
+        description: Identifies this as a stat emission payload
+
+      parameters:
+        type: object
+        required: [metrics]
+        properties:
+          metrics:
+            type: array
+            items:
+              type: object
+              required: [metric_id, value]
+              properties:
+                metric_id: { type: string, example: "temp_c" }
+                value: { type: number }
+                unit: { type: string, example: "C" }
+                sensor_id: { type: string, description: "Optional sensor reference" }
+                notes: { type: string, description: "Optional context or flags" }
+
+example:
+  origin_guid: "b2a7c4d6-7e82-495c-8ad5-62f8f5e85a12"
+  destination_guid: "multicast:stat-consumers"
+  timestamp_utc: "2025-03-25T23:51:30Z"
+  command:
+    action: "stat_emit"
+    parameters:
+      metrics:
+        - metric_id: "temp_c"
+          value: 23.7
+          unit: "C"
+          sensor_id: "temp_internal_01"
+        - metric_id: "gravity"
+          value: 1.068
+          unit: "sg"
+          sensor_id: "hydro_03"
+          notes: "slight drift detected from prior reading"

@@ -1,0 +1,87 @@
+id: biofuel_butanol_clostridium_abe_v1
+display_name: ABE Butanol Fermentation - Clostridium acetobutylicum (1500L Arc Reactor)
+description: >
+  Industrial-scale ABE (acetone-butanol-ethanol) fermentation using *Clostridium acetobutylicum* in a 1500L osmostatic bioreactor. Optimized for butanol yield with real-time sensor feedback and control via JP7 protocols.
+version: 1.0
+
+target_product:
+  primary: butanol
+  secondary: acetone, ethanol
+  titer_estimate:
+    butanol_g_l: 15
+    yield_percent_theoretical: 80
+  volatile_capture: true
+
+biomass:
+  organism: Clostridium acetobutylicum ATCC 824
+  anaerobic: true
+  optimum_temp_c: 37
+  tolerance:
+    ph: [5.0, 6.2]
+    temp_c: [32, 39]
+    osmolality_mOsm: [100, 500]
+  inoculation_density_od600: 0.1
+
+vessel:
+  ref: arc-heavy-1500L
+  working_volume_l: 1350
+
+fermentation_profile:
+  phase: acidogenic
+  duration_hr: 24
+  controls:
+    temperature_c: 37
+    ph_setpoint: 6.0
+    stirring_rpm: 100
+    sparging: N2_sweep
+    osmolock: false
+  feed:
+    glucose_syrup:
+      volume_l: 50
+      rate: bolus
+    corn_steep_liquor:
+      volume_l: 15
+  notes: Initiates growth and acetate/butyrate formation.
+
+  phase: solventogenic
+  trigger: auto (pH drop below 5.2)
+  duration_hr: 36–72
+  controls:
+    temperature_c: 36
+    ph_drift_allow: true
+    osmolock_trigger_sg: 1.005
+    stir_reduction: true
+    sparging: none
+  feed:
+    glucose_syrup:
+      volume_l: 30
+      rate: pulsed
+  notes: Clostridia shift to solvent production (ABE). Monitor CO2 and SG closely.
+
+instrumentation:
+  sampling_interval_min: 15
+  sensors:
+    - ph
+    - temperature
+    - gravity
+    - osmolality
+    - abv
+  logging: kafka/abe-clostridium-1500L
+
+termination:
+  criteria:
+    - sg < 1.002
+    - butanol_estimate_g_l >= 15
+  actions:
+    - cold_crash
+    - nitrogen_blanket
+    - drain_to_distillation
+
+metadata:
+  author: janearc
+  created: 2025-03-26
+  license: CC-BY-SA-4.0
+  notes: >
+    The ABE process benefits from precise pH control and early detection of solventogenic shift. 
+    Real-time osmolality and SG logging supports dynamic osmolock control and product targeting.
+
