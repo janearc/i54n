@@ -1,0 +1,76 @@
+id: carrot_lady_osmostatic_wine_v1
+display_name: Carrot Lady - Osmostatic Wine
+version: 1.0
+description: >
+  An austere, dry, herbal osmostatic wine built like a chardonnay that got lost in a root cellar.
+  Distinct carrot, beet, galangal, and ginger flavors. High alcohol and extremely fermentable base
+  designed for aging and clarity.
+
+recipe:
+  target_product:
+    type: beverage.wine.experimental
+    abv_target_percent: 13.0
+    final_gravity: 0.998
+    carbonation: still
+
+  biomass:
+    material_ref: champagne_yeast_lalvin_ec1118_v1
+    pitch_rate_g_per_l: 1.25
+
+  ingredients:
+    - material_ref: carrot_juice_unsweetened_v1
+      volume_l: 2.0
+    - material_ref: beet_raw_or_roasted_v1
+      mass_g: 300
+    - material_ref: galangal_fresh_sliced_v1
+      mass_g: 30
+    - material_ref: ginger_fresh_peeled_v1
+      mass_g: 50
+    - material_ref: granulated_sugar_cane_usda_v1
+      mass_g: 200
+    - material_ref: fermaid_o_lallemand_v1
+      mass_g: 2.5
+    - material_ref: dap_diammonium_phosphate_v1
+      mass_g: 1.5
+    - material_ref: pectic_enzyme_standard_v1
+      mass_g: 1.5
+      usage_notes: Add 12 hours after pitch
+
+  tolerances:
+    temp_c: [25, 27]
+    pH: [3.5, 4.0]
+    osmotic_pressure_g_per_l: 180
+
+  catalysts:
+    - type: nutrient_addition
+      time_hours: 0
+      materials:
+        - fermaid_o_lallemand_v1
+        - dap_diammonium_phosphate_v1
+    - type: enzyme_addition
+      time_hours: 12
+      materials:
+        - pectic_enzyme_standard_v1
+
+  controls:
+    - type: ambient_fermentation
+      temp_c: 26
+    - type: stirring
+      trigger: floating_krausen
+      notes: stir to restore pelagic activity if yeast becomes trapped
+    - type: cold_crash
+      trigger: fermentation_complete
+      temp_c: 1
+      duration_days: 2
+    - type: racking
+      trigger: post_crash
+
+logging:
+  enabled: true
+  interval_minutes: 30
+  fingerprint_compare: true
+  notes: "Dry osmostatic ferment expected to push EC-1118 close to ethanol/osmolality tolerance."
+
+license: CC-BY-NC-4.0
+contributor: janearc
+date_created: 2025-03-25

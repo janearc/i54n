@@ -1,0 +1,72 @@
+id: fp_seltzer_8_percent_v1
+related_recipe: basic_seltzer_8_percent_v1
+biomass_ref: champagne_yeast_lalvin_ec1118_v1
+temp_c: 20
+volume_l: 1.0
+version: 1.0
+
+time_series:
+  - time_hours: 0
+    brix: 10.4
+    sg: 1.060
+    abv_percent: 0.0
+    pH: 6.9
+    osmolality_g_per_l: 100.0
+    co2_ppm: 0
+
+  - time_hours: 6
+    brix: 9.2
+    sg: 1.052
+    abv_percent: 1.2
+    pH: 5.6
+    osmolality_g_per_l: 90.0
+    co2_ppm: 1800
+
+  - time_hours: 12
+    brix: 7.5
+    sg: 1.040
+    abv_percent: 2.5
+    pH: 4.8
+    osmolality_g_per_l: 76.0
+    co2_ppm: 3600
+
+  - time_hours: 24
+    brix: 4.8
+    sg: 1.020
+    abv_percent: 5.1
+    pH: 4.2
+    osmolality_g_per_l: 44.0
+    co2_ppm: 8200
+
+  - time_hours: 48
+    brix: 1.5
+    sg: 1.002
+    abv_percent: 7.8
+    pH: 3.9
+    osmolality_g_per_l: 8.0
+    co2_ppm: 12000
+
+  - time_hours: 60
+    brix: 0.8
+    sg: 1.000
+    abv_percent: 8.0
+    pH: 3.8
+    osmolality_g_per_l: 2.5
+    co2_ppm: 12500
+    notes: terminal gravity reached
+
+instrumentation:
+  logged: true
+  resolution_minutes: 30
+  sensors:
+    - sg
+    - brix
+    - pH
+    - osmolality
+    - co2_ppm
+    - abv_calculated
+
+license: CC0-1.0
+contributor: janearc
+date_created: 2025-03-25
+
