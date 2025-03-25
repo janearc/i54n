@@ -1,59 +1,62 @@
 # JP7 Recipe Interface Patent
 
-**Title:** Biological Process Recipe Specification and Execution Format
+**Title:** Bioprocess Recipe and Open-Loop Control Schema for Osmostatic Fermentation and Related Biological Reactions
 
-**Abstract:**  
-This patent describes a machine-readable specification format for encoding reproducible osmostatic brewing recipes. The format enables users to define detailed biological process recipes in a standardized, reproducible, and transmissible manner, capturing essential parameters such as target product, microbial strain characteristics, environmental tolerances, and process control commands. The innovation lies in its ontological approach, which formalizes the relationships between these parameters, thereby ensuring consistent outcomes and offering potential for trademarkable identity within the osmostatic brewing industry.
+**Abstract:**
+This patent discloses a machine-readable interface for defining, monitoring, and verifying open-loop biochemical reactions, including osmostatic fermentation processes. The system captures the recipe-level intent and execution logic as well as runtime observations, catalyst interventions, and deviations in signature output. The format supports both YAML and alternative serialization structures such as JSON or TOML, making it suitable for integration with industrial control systems, cloud infrastructure, and hardware-native device protocols.
 
-**Field of Invention:**  
-The invention pertains to digital communication protocols and data formats for controlling biological process equipment, specifically focused on defining osmostatic brewing recipes. It provides a systematic method for capturing and transmitting the critical parameters that govern controlled microbial fermentation processes.
+**Field of Invention:**
+The invention relates to the interface between biochemical process planning and execution, providing a structured schema for reproducible reactions, control events, sensor telemetry, and forensic signature validation. It serves both human-readable documentation and machine-executable behavior for precision biological manufacturing.
 
-**Background:**  
-Traditional brewing recipes are largely qualitative, relying on subjective judgment and imprecise measurements that often result in batch-to-batch variability. Osmostatic brewing, however, requires precise control over biological parameters—such as osmotic pressure, pH, and fermentation kinetics—to achieve consistent outcomes. Existing recipe formats fail to capture the complex interrelationships between these parameters. This specification addresses that gap by offering a structured, ontological schema that enables the reproducible execution of osmostatic brewing processes, ensuring both consistency and scalability.
+**Background:**
+Traditional recipe formats fail to capture the full complexity and variability of live biological reactions—especially under osmostatic stress. Instrumented bioreactors require standardized schema definitions to translate recipe logic into open-loop control instructions, and to correlate those instructions with sensor data and biochemical outputs over time.
 
-**Summary:**  
-This machine-readable schema is a YAML-based format designed to encapsulate the critical parameters for osmostatic brewing. Key elements include:
-- **Target Product:** Definition of the desired final product.
-- **Biomass:** Detailed specifications of the microbial strain, including tolerance thresholds and performance metrics.
-- **Tolerances:** Precise environmental limits such as maximum osmotic pressure, acceptable pH ranges, and ABV or solvent concentration thresholds.
-- **Controls:** Process commands for actions such as nutrient addition, temperature adjustments, dilution, and osmolocking triggers.
-- **Versioning:** A mechanism to track revisions and ensure backward compatibility.
+**Summary:**
+The schema is composed of two principal components:
+- A **recipe specification**, including biomass, tolerances, environmental controls, catalysts, and final product targets.
+- A **bioreactor log schema**, including timestamps, interventions, catalyst events, sensor data, fingerprint deviation scores, and verification outcomes.
 
-The ontological approach not only records numerical values but also delineates the causal relationships between process parameters and microbial responses, providing a comprehensive blueprint for reproducible brewing.
+This schema interface may be serialized in YAML, JSON, or equivalent structured formats and used for real-time control, post-hoc analysis, or ML/LLM-based training.
 
-**Detailed Description:**  
-- **Format Structure:**  
-  The schema is organized into the following key sections:
-  - `target_product`: Specifies the intended final product.
-  - `biomass`: Describes the microbial strain used, along with its tolerance limits and performance data.
-  - `tolerances`: Outlines critical environmental parameters, such as maximum osmotic pressure, pH, and ABV/solvent limits.
-  - `controls`: Lists process commands (e.g., scheduled nutrient additions, temperature adjustments, dilution triggers, and osmolocking events).
-  - `version`: Indicates the schema version to support iterative improvements.
-  
-- **Ontological Framework:**  
-  The format is designed to capture the relationships between the various parameters. For instance, it defines how changes in osmotic pressure influence microbial metabolic activity and specifies the corresponding control actions. This structured, relational data approach ensures that the recipe is both machine-readable and human-interpretable, thereby facilitating reproducibility across different bioreactor systems.
+**Detailed Description:**
 
-- **Integration with Control Systems:**  
-  The schema is intended for use with digital bioreactor control systems that can parse the YAML format and execute real-time adjustments based on sensor data. This integration allows for automated execution of the brewing process, ensuring that the defined parameters are maintained throughout fermentation.
+- **Recipe Format Structure:**
+  - `target_product`: textual and structured description of intended output
+  - `biomass`: microbial strain, performance curves, environmental tolerances
+  - `tolerances`: osmotic pressure, alcohol/solvent limits, pH, temperature
+  - `controls`: instruction list for control loops or discrete actions
+  - `catalysts`: nutrient, sugar, or cofactor additions by volume, concentration, or time
+  - `versioning`: format version, iteration lineage, changelog
 
-- **Trademark and Reproducibility:**  
-  By standardizing the way osmostatic brewing recipes are defined, the format not only enhances reproducibility but also creates a unique, trademarkable standard for osmostatic brewing methodologies.
+- **Bioreactor Process Schema:**
+  - `unit_id`, `batch_id`, `start_time`
+  - Live sensor values (pH, temperature, osmotic pressure, ABV, CO₂ pressure, etc)
+  - Timestamped interventions and catalyst additions
+  - Expected vs actual signature deviation scoring
+  - Fingerprint validation and audit outcomes
 
-**Claims (Draft):**  
-1. A machine-readable specification format for encoding osmostatic brewing recipes, comprising fields for target product, microbial strain characteristics, environmental tolerances, and process control commands, wherein the format is defined in YAML.  
-2. The format of claim 1, wherein the schema includes an ontological framework that captures the causal relationships between fermentation parameters and microbial responses.  
-3. The format of claim 1, further comprising versioning features to support iterative refinement of biological recipes.  
-4. The format of claim 1, wherein the standardized recipe format is capable of being trademarked as a unique identifier for reproducible osmostatic brewing processes.
+- **Integration Targets:**
+  - Compatible with log ingestion systems (Kafka, MQTT, filesystem, Prometheus)
+  - Bioreactor CLIs and dashboards can render live process snapshots
+  - Cloud or local automation systems can ingest logs for ML inference
 
-**Preferred Embodiments:**  
-Preferred embodiments include:
-- A sample YAML schema detailing sections for `target_product`, `biomass`, `tolerances`, `controls`, and `version`.
-- Integration of the schema with a Linux-based digital control module that can execute process commands in real time.
-- Use of the schema in both manual and automated brewing setups, supporting artisanal as well as industrial-scale reproducibility.
+- **Serialization Agnosticism:**
+  The schema does not require YAML. Although YAML is commonly used for authoring recipes, the system is serialization-agnostic and may be implemented in JSON, CBOR, Protobuf, or other structured data representations. This ensures compatibility with embedded systems, HTTP APIs, databases, and industrial edge compute systems.
 
-**Industrial Applications:**  
-The format is applicable to a variety of industrial biological processes, including:
-- Osmostatic brewing for high-stability, reproducible beverages.
-- Biofuel production processes requiring precise microbial control.
-- Pharmaceutical and biochemical manufacturing where consistency and process reproducibility are critical.
-- Any industrial application where a standardized, reproducible recipe format can enhance process control and product quality.
+**Claims (Draft):**
+1. A structured schema for defining a biological reaction process comprising target product goals, biomass tolerances, catalyst events, and control parameters.
+2. The schema of claim 1, further comprising a logging format for timestamped observations and interventions during the bioprocess.
+3. The schema of claim 1, wherein the control data is formatted for execution or monitoring via an open-loop industrial control system.
+4. The schema of claim 1, wherein deviations from expected biochemical signatures are recorded and scored.
+5. The schema of claim 1, wherein the schema is serializable in multiple formats including YAML, JSON, or equivalent.
+
+**Preferred Embodiments:**
+- A command-line interface or bioreactor control node capable of ingesting a recipe and process definition file in YAML, executing interventions and control loops, and exporting a real-time log in JSON.
+- An interface that uses live fingerprint analysis (as defined in Patent 3) to signal whether process outcomes deviate from expected baselines.
+- Full traceability from recipe definition to final batch signature, including catalyst history and microbial tolerances.
+
+**Industrial Applications:**
+- Osmostatic fermentation for high-ABV stabilized wine, cider, or spirit analogs
+- Closed-loop and open-loop biofuel manufacturing pipelines
+- Pharmaceutical bioreactor logging and batch validation
+- Continuous improvement pipelines for metabolic engineering and synthetic biology
