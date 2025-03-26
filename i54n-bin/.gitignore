@@ -1,0 +1,24 @@
+# Binaries and build artifacts
+bior
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Go build cache
+*.out
+*.test
+*.log
+
+# Mage cache
+magefile
+magefile.*.go
+
+# IDE and OS-specific stuff
+.vscode/
+.DS_Store
+Thumbs.db
+
+# jane was messing around with stuff as per usual
+.swo
+.swp
