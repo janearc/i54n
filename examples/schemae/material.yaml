@@ -1,0 +1,56 @@
+id: string  # Unique material identifier
+display_name: string
+description: string
+
+material_type: enum[
+  sugar,
+  nutrient,
+  enzyme,
+  cofactor,
+  mineral,
+  acid,
+  base,
+  buffer,
+  culture,
+  solvent,
+  anti-foam,
+  misc_additive
+]
+
+form: enum[
+  liquid,
+  powder,
+  crystal,
+  slurry,
+  gas,
+  solid,
+  pellet,
+  gel
+]
+
+composition:
+  components:
+    - name: string
+      concentration: string  # e.g. "10 g/L", "20% v/v"
+      role: optional string  # optional clarification (e.g., "carbon_source", "pH_control")
+  purity_percent: optional number
+
+storage:
+  temperature_c: range[number, number]
+  container_type: string
+  light_sensitive: bool
+  handling_notes: string
+
+source_info:
+  vendor: string
+  catalog_number: string
+  lot_number: optional string
+
+safety:
+  bsl: number  # biosafety level (0–2 typically)
+  hazardous: bool
+  safety_notes: string
+
+license: string
+contributor: string
+date_created: date

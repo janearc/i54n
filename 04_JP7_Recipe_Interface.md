@@ -30,7 +30,7 @@ This schema interface may be serialized in YAML, JSON, or equivalent structured 
 
 - **Bioreactor Process Schema:**
   - `unit_id`, `batch_id`, `start_time`
-  - Live sensor values (pH, temperature, osmotic pressure, ABV, CO₂ pressure, etc)
+  - Live sensor values (pH, temperature, osmotic pressure, ABV, CO₂ pressure, etc.)
   - Timestamped interventions and catalyst additions
   - Expected vs actual signature deviation scoring
   - Fingerprint validation and audit outcomes
@@ -60,3 +60,4 @@ This schema interface may be serialized in YAML, JSON, or equivalent structured 
 - Closed-loop and open-loop biofuel manufacturing pipelines
 - Pharmaceutical bioreactor logging and batch validation
 - Continuous improvement pipelines for metabolic engineering and synthetic biology
+

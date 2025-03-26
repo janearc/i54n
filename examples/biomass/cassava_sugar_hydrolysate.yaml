@@ -1,0 +1,45 @@
+id: cassava_sugar_hydrolysate
+version: 1.0
+display_name: Cassava Sugar Hydrolysate
+description: >
+  A starch-derived sugar solution obtained from enzymatic hydrolysis of cassava root.
+  Used as a high-carbohydrate feedstock for fungal biomass fermentation and microbial protein production.
+
+type: biomass
+category: sugar_solution
+origin: plant
+
+composition_percent:
+  glucose: 78.0
+  maltose: 5.0
+  other_sugars: 3.0
+  organic_acids: 2.0
+  ash: 1.0
+  water: 11.0
+
+fermentation_profile:
+  preferred_conditions:
+    temperature_c: 28-35
+    pH: 4.8-5.5
+    dissolved_oxygen: low
+  compatible_microorganisms:
+    - fusarium_venenatum
+    - aspergillus_niger
+    - rhizopus_oryzae
+  notes: >
+    Glucose-rich hydrolysate promotes rapid fungal biomass accumulation and high protein yield.
+
+handling:
+  state: liquid
+  viscosity: low
+  odor: neutral
+  storage_recommendation: sealed container at 4°C
+
+safety:
+  bsl: 1
+  allergens_present: none
+  treatment_required: pasteurization (optional, for bioreactor sterility)
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-26

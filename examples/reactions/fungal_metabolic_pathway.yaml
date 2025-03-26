@@ -1,0 +1,60 @@
+id: fungal_pathway_cassava_to_fermotein
+version: 1.0
+display_name: Fungal Fermentation Pathway (Cassava to Mycoprotein)
+description: >
+  A defined fungal metabolic pathway and fermentation route for converting cassava-derived sugars
+  into a mycoprotein biomass resembling Fermotein®. This pathway focuses on the aerobic cultivation
+  of filamentous fungi with high-protein yields, low lipid content, and fibrous texture.
+
+input_substrate:
+  - name: cassava_starch_hydrolysate
+    type: hydrolyzed_polysaccharide
+    composition:
+      glucose: 65%
+      maltose: 15%
+      other_sugars: 5%
+      fiber: 2%
+      water: 13%
+
+organism:
+  species: Fusarium venenatum (or similar)
+  strain: industrial_high_yield
+  biosafety_level: 1
+  notes: GRAS-status mycoprotein strain optimized for aerobic fed-batch fermentation
+
+fermentation_conditions:
+  type: aerobic_fed_batch
+  reactor_type: examples/bioreactor/arc_surface_120L_algae.yaml
+  temperature_c: 30
+  pH: 6.2
+  aeration_rate_vvm: 0.8
+  agitation_rpm: 300
+  fermentation_time_hours: 96
+  antifoam_added: true
+  dissolved_oxygen_control: cascade_maintain_30pct
+
+biomass_yield:
+  dry_weight_g_per_l: 85
+  protein_pct_dry_weight: 52
+  fiber_pct_dry_weight: 20
+  fat_pct_dry_weight: 7
+  nucleic_acid_pct_dry_weight: 4
+  notes: >
+    Final product harvested via centrifugation, washed, thermally processed, and deactivated.
+    Texture modified via shear or rolling.
+
+outputs:
+  - name: mycoprotein_biomass
+    use: human_food, animal_feed
+    storage: chilled_or_dried
+
+byproducts:
+  - name: fungal_broth_residue
+    use: compost_or_secondary_fermentation
+  - name: carbon_dioxide
+    use: vent_or_capture
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-26
+

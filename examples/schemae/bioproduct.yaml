@@ -1,0 +1,39 @@
+id: string  # unique identifier
+display_name: string
+description: string
+
+product_class: enum[gas, liquid, slurry, solid, biomass, extract, compound]
+biosafety:
+  bsl: integer  # 1–4
+  select_agent: bool
+  handling_notes: string
+
+source_biomass: [string]  # ids of one or more biomass sources
+produced_by_reaction: string  # id of reaction that yields this product
+
+physical_properties:
+  state: enum[solid, liquid, gas, slurry]
+  color: string
+  odor: string
+  density_g_per_ml: number
+  pH: number
+  shelf_stable: bool
+
+chemical_signature:
+  major_compounds: [string]
+  alcohol_content_percent: number  # if applicable
+  lipid_content_percent: number  # if applicable
+  protein_content_percent: number  # if applicable
+  other_characteristics: [string]
+
+storage_and_transport:
+  recommended_container: string
+  temperature_range_c: [number, number]
+  hazard_classification: string  # optional, e.g. flammable, corrosive
+
+applications: [string]
+regulatory_status: string  # e.g. GRAS, REACH, clinical_use_only
+
+license: string
+contributor: string
+date_created: date

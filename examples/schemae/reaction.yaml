@@ -1,0 +1,61 @@
+id: string  # unique identifier
+display_name: string
+description: string
+
+reaction_class: enum[
+  ethanol_fermentation,
+  abe_fermentation,
+  lactic_fermentation,
+  photosynthesis,
+  methanogenesis,
+  anaerobic_digestion,
+  aerobic_bacterial_culture,
+  enzymatic_hydrolysis,
+  biosynthetic_enzyme_pathway,
+  solid_state_fermentation,
+  synthetic_reduction,
+  natural_organic_reduction,
+  co_culture,
+  continuous_culture,
+  batch_microbial_culture,
+  acetic_fermentation,
+  other
+]
+
+inputs_required:
+  - name: string
+    type: enum[fluid, biomass, gas, nutrient, sugar, enzyme, catalyst]
+    optional: boolean
+
+environmental_targets:
+  temperature_c: range[number, number]
+  pH: range[number, number]
+  oxygen: enum[low_or_none, aerobic, anaerobic, microaerophilic]
+  light_intensity_lux: optional range[number, number]
+  co2_concentration_ppm: optional range[number, number]
+
+monitoring_metrics:
+  - id: string  # e.g., pH, temperature, gravity, abv, etc.
+
+control_capabilities_required:
+  - enum[
+      temp_control,
+      nutrient_feed,
+      gas_exchange,
+      co2_release,
+      pH_adjustment,
+      light_modulation,
+      oxygenation,
+      agitation_control
+    ]
+
+expected_outputs:
+  - name: string
+    type: enum[bioproduct, intermediate, gas, slurry, extract]
+    unit: optional string
+
+safety_notes: optional string
+
+license: string
+contributor: string
+date_created: date

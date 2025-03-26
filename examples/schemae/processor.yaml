@@ -1,0 +1,56 @@
+id: string  # unique identifier
+display_name: string
+description: string
+
+processor_type: enum[
+  distillation,
+  gas_separator,
+  centrifuge,
+  membrane_filter,
+  drying_unit,
+  crystallizer,
+  solid_liquid_separator,
+  pasteurizer,
+  enzymatic_converter,
+  packaging_line,
+  other
+]
+
+supported_inputs:
+  - type: enum[liquid, gas, slurry, biomass, vapor, pellet, solid]
+    description: optional string
+
+supported_outputs:
+  - type: enum[liquid, gas, solid, digestate, concentrate, extract, pellet]
+    description: optional string
+
+operational_parameters:
+  temperature_c: optional range[number, number]
+  pressure_kpa: optional range[number, number]
+  flow_rate_lph: optional number
+  energy_usage_kw: optional number
+  automation_supported: bool
+
+monitoring:
+  sensors:
+    - id: string  # sensor identifier, e.g. temperature, flow_rate
+      datatype: enum[float, integer, bool, string]
+      unit: string
+      description: optional string
+
+network:
+  onboard_computer:
+    type: sbc_linux
+    connectivity: [cat6, wifi]
+    control_interface: cli_rpc
+    logging_output: kafka_stream
+    dashboard: grafana_compatible
+
+safety:
+  containment_required: bool
+  sanitation_cycle_supported: bool
+  safety_notes: optional string
+
+license: string
+contributor: string
+date_created: date

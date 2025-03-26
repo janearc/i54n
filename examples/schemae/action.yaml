@@ -1,0 +1,58 @@
+id: string  # unique identifier for the action schema
+display_name: string
+description: string
+
+action_type: enum[
+  catalyst_addition,
+  temp_adjustment,
+  pressure_release,
+  gas_injection,
+  ph_adjustment,
+  agitation_change,
+  light_adjustment,
+  oxygenation,
+  sampling,
+  drain_waste,
+  sanitize,
+  containment,
+  shutdown,
+  vent,
+  emergency_shutdown,
+  biomass_injection,
+  media_refresh,
+  sensor_calibration,
+  log_event,
+  other
+]
+
+trigger_conditions:
+  - sensor: optional string  # e.g. gas_pressure, pathogen_level
+    threshold: string        # human- or machine-readable like "90% max_pressure" or "critical"
+    manual_trigger: optional boolean  # true if human-invoked
+
+system_affected: enum[
+  gas_release,
+  reactor,
+  entire_system,
+  logging_node,
+  control_unit,
+  fluidic_network,
+  other
+]
+
+result: list[string]  # human-readable outcomes, comma-separated in examples, split into list for structure
+
+safety_level: enum[
+  low,
+  moderate,
+  high,
+  critical
+]
+
+log_required: boolean
+auditable: boolean
+bsl_sensitive: boolean
+
+license: string
+contributor: string
+date_created: date

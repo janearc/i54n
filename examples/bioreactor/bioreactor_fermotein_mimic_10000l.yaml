@@ -1,0 +1,82 @@
+id: bioreactor_fermotein_mimic_10000l
+version: 1.0
+display_name: JP7 Filamentous Fungal Fermentation System (Cassava Input)
+description: >
+  An aerobic submerged bioreactor system designed to mimic the core elements of the Protein Brewery's 
+  Fermotein® production pipeline, converting cassava-derived sugars into fungal biomass for use as an 
+  alternative protein source. Uses filamentous fungi cultivated under precise aerobic, pH-controlled 
+  conditions with nutrient supplementation to maximize biomass yield and texture fidelity.
+
+type: bioreactor
+role: protein_fermentation
+
+biomass_property_ref: examples/biomass/cassava_sugar_hydrolysate.yaml
+bioreactor_type_ref: examples/bioreactor/arc_surface_120L_algae.yaml
+
+vessel:
+  shape: cylindrical
+  volume_l: 10000
+  headspace_percent: 20
+  construction:
+    material: stainless_steel_316L
+    jacketed: true
+    aseptic_ports: true
+    cip_ready: true
+  agitation:
+    method: top_drive_rushton
+    rpm: 300
+  aeration:
+    method: sparger_ring
+    airflow_rate_lpm: 5000
+    oxygen_enrichment: optional
+  baffles: 4
+
+access:
+  input_ports:
+    - name: sugar_feed
+      type: hydrolysate
+    - name: nutrients
+      type: solution
+    - name: base_adjustment
+      type: alkaline
+  output_ports:
+    - name: fungal_biomass
+      type: slurry
+    - name: broth
+      type: liquid_waste
+  sample_port: true
+  sanitation:
+    cip_cleaning: true
+    steam_in_place: true
+
+instrumentation:
+  sensors:
+    - pH
+    - temperature
+    - dissolved_oxygen
+    - biomass_density
+    - redox_potential
+  control_loops:
+    - temperature_control: 30C
+    - pH_control: 5.5
+    - DO_control: >40%
+  data_logging: kafka_stream
+  dashboard: grafana_compatible
+
+organism:
+  type: filamentous_fungi
+  strain: fusarium_venenatum_or_similar
+  inoculum_volume_percent: 5
+  culture_medium: minimal_with_nitrogen_and_trace_elements
+  fermentation_time_hours: 72
+
+power:
+  source: grid_or_solar
+  backup: battery_or_generator
+
+processor_link:
+  expected_processor: biomass_dewatering_and_texture_processor_v1
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-26

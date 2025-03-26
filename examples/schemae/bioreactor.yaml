@@ -1,0 +1,104 @@
+id: string  # unique identifier
+version: string
+display_name: string
+description: string
+
+type: enum[bioreactor]
+role: enum[
+  anaerobic_digester,
+  phototrophic_reactor,
+  aerobic_culture,
+  submerged_fermentation,
+  solid_state,
+  mixed_reactor,
+  osmostatic_vessel,
+  batch_reactor,
+  continuous_reactor
+]
+
+biomass_property_ref: string  # optional — reference to expected biomass property file
+bioreactor_type_ref: string   # optional — reference to standard reactor model
+
+vessel:
+  shape: string
+  volume_l: number  # or volume_m3 if appropriate
+  dimensions_cm: [number, number, number]  # optional LxWxH
+  depth_m: number  # optional
+  construction:
+    material: string
+    double_wall: bool
+    jacketed: bool
+    thickness_mm: number
+    top_cover: string
+    bracing:
+      internal: bool
+      external: bool
+      mounting: string
+  drainage:
+    type: string
+    outlet: string
+    powered: bool
+
+access:
+  input_ports:
+    - name: string
+      type: string
+  output_ports:
+    - name: string
+      type: string
+  co2_port: bool
+  oxygenation_port: bool
+  sample_port: bool
+  sanitation:
+    spray_nozzles_internal: bool
+    fire_suppression_inert_gas: bool
+    flush_ports: bool
+
+agitation:
+  method: string
+  frequency_minutes: number
+
+visual_inspection:
+  cameras:
+    count: number
+    modes: [string]
+  viewport: bool
+  led_lighting:
+    - position: string
+      spectrum: [string]
+      adjustable_intensity: bool
+
+instrumentation:
+  sensors: [string]
+  sample_resolution_minutes: number
+
+network:
+  onboard_computer:
+    type: string
+    connectivity: [string]
+    display: string
+    control_interface: string
+    logging_output: string
+    dashboard: string
+
+power:
+  source: string
+  backup: string
+
+mounting:
+  automation_ready: bool
+  floor_mounted: bool
+  earth_embedded: bool
+  outdoor_ready: bool
+  marine_environment_certified: bool
+
+processor_link:
+  expected_processor: string
+
+biosafety:
+  bsl: number
+  notes: string
+
+license: string
+contributor: string
+date_created: date

@@ -1,0 +1,44 @@
+id: string  # Unique sensor identifier, e.g., "pH", "temperature"
+
+display_name: string  # Human-friendly name, e.g., "Temperature Sensor"
+
+description: string  # What this sensor measures and why it matters
+
+unit: string  # SI unit or domain-specific unit, e.g., "°C", "ppm", "lux", "mV"
+
+range:
+  min: float  # Lower bound of valid/expected values
+  max: float  # Upper bound
+
+data_type: enum[
+  integer,
+  float,
+  boolean,
+  string
+]
+
+precision: optional float  # Smallest meaningful increment
+
+resolution_seconds: optional int  # Sensor polling or update frequency
+
+sensor_type: enum[
+  chemical,
+  thermal,
+  optical,
+  pressure,
+  electrical,
+  fluidic,
+  acoustic,
+  biological,
+  computed,
+  derived
+]
+
+safety_critical: boolean  # Whether this value can trigger containment or shutdown actions
+
+calibration_required: boolean
+calibration_method: optional string
+
+license: string
+contributor: string
+date_created: date

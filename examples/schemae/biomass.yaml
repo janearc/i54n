@@ -1,0 +1,43 @@
+id: string  # unique identifier
+display_name: string
+description: string
+
+classification:
+  kingdom: string
+  phylum: string
+  class: string
+  order: string
+  family: string
+  genus: string
+  species: string
+
+metabolic_class: enum[phototrophic, heterotrophic, chemoautotrophic, mixotrophic]
+reaction_type: string  # links to reaction schema id
+preferred_reactors: [string]
+
+growth_parameters:
+  temperature_c_optimal: number
+  temperature_c_range: [number, number]
+  pH_optimal: number
+  pH_range: [number, number]
+  salinity_g_per_l: [number, number]
+  co2_concentration_ppm: [number, number]
+  light_intensity_lux: [number, number]
+  light_spectrum_preference: [string]
+
+nutrient_requirements:
+  media: string
+  nitrogen_source: string
+  phosphorus_source: string
+  trace_metals: bool
+
+monitoring_recommendations: [string]
+extraction_methods: [string]
+applications: [string]
+safety_notes: string
+
+biomass_property_ref: string  # optional: link to props file
+
+license: string
+contributor: string
+date_created: date

@@ -72,7 +72,7 @@ biosafety:
 
 This document is a living file and should evolve with the state of biosecurity, synthetic biology, and the JP7 project's future scope.
 
-**Contributors:** Jane Arcadia, Cinder Solis  
+**Contributors:** Jane Arc, Cinder Solis  
 **License:** CC-BY-SA-4.0
 **Last Updated:** 2025-03-25
 
