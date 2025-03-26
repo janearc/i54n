@@ -1,0 +1,21 @@
+iid: cow_manure
+display_name: Cow Manure
+description: >
+  Bovine fecal matter with high moisture and volatile solids content. Rich in anaerobically
+  degradable fiber and lignocellulosic biomass. Ideal for methane-rich biogas production.
+origin: bovine
+source_context: industrial_dairy_farm
+moisture_content_pct: 80
+volatile_solids_pct: 75
+carbon_nitrogen_ratio: 25
+density_kg_per_m3: 950
+typical_pathogens:
+  - escherichia_coli
+  - salmonella_enterica
+  - listeria_monocytogenes
+handling_requirements:
+  biosafety_level: 1
+  storage: cooled_or_fresh
+  safety: gloves_required
+last_validated: 2025-03-25
+license: CC-BY-SA-4.0

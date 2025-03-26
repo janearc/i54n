@@ -1,0 +1,24 @@
+preferred_biomass:
+  - id: cow_manure
+    display_name: Cow Manure
+    description: >
+      Semi-solid fecal material from bovine animals. Rich in cellulose, undigested plant matter,
+      and anaerobically degradable organic compounds. High methane yield under proper digestion.
+    origin: bovine
+    moisture_content_pct: 80
+    volatile_solids_pct: 75
+    carbon_nitrogen_ratio: 25
+    typical_pathogens: [e_coli, salmonella]
+    reference_file: ../biomass/cow_manure.yaml
+
+  - id: horse_manure
+    display_name: Horse Manure
+    description: >
+      Solid to semi-solid waste from equine animals, often mixed with straw bedding. Lower moisture
+      than cow manure but high in fibrous, lignin-rich undigested cellulose.
+    origin: equine
+    moisture_content_pct: 65
+    volatile_solids_pct: 70
+    carbon_nitrogen_ratio: 30
+    typical_pathogens: [clostridium, streptococcus]
+    reference_file: ../biomass/horse_manure.yaml

@@ -1,0 +1,97 @@
+id: bioreactor_faeces_digester_5000m3
+version: 1.1
+display_name: JP7 Shallow Agricultural Anaerobic Digester (5000m³)
+description: >
+  A high-surface-area, shallow-depth bioreactor optimized for anaerobic digestion
+  of animal waste (e.g., bovine, equine) and agricultural runoff. Designed for methane
+  and biofuel production with onboard monitoring and processor linkage. Can be deployed
+  at industrial scale for sustainable rural energy.
+
+type: bioreactor
+role: anaerobic_digester
+
+preferred_biomass:
+  - cow_manure
+  - horse_manure
+
+biosafety:
+  bsl: 1
+  notes: Standard agricultural handling precautions advised.
+
+vessel:
+  shape: trench
+  volume_m3: 5000
+  depth_m: 1
+  length_m: 100
+  width_m: 50
+  construction:
+    material: stainless_steel_or_hdpe
+    double_wall: false
+    top_cover: flexible_blader_or_rigid_roof
+    slope: graded_for_digestate_drainage
+  drainage:
+    type: sloped
+    outlet: powered_valve
+  bracing:
+    external: reinforced
+    mounting: earth_embedded
+
+access:
+  input_ports:
+    - name: manure_feed
+      type: slurry
+    - name: wastewater
+      type: fluid
+  output_ports:
+    - name: methane_gas
+      type: gas
+    - name: digestate
+      type: slurry
+  sample_port: true
+  sanitation:
+    flush_ports: true
+
+agitation:
+  method: paddle_sweep_or_slow_blade
+  frequency_minutes: 15
+
+instrumentation:
+  sensors:
+    - temperature
+    - pH
+    - gas_pressure
+    - methane_concentration
+    - volume_occupied
+    - slurry_density
+  sample_resolution_minutes: 10
+
+visual_inspection:
+  cameras:
+    count: 1
+    modes: [frame_capture]
+  led_lighting:
+    - position: trench_overhead
+
+network:
+  onboard_computer:
+    type: sbc_linux
+    connectivity: [cat6, wifi]
+    display: minimal_lcd
+    control_interface: cli_rpc
+    logging_output: kafka_stream
+    dashboard: grafana_compatible
+
+power:
+  source: grid_or_solar
+  backup: battery_or_generator
+
+processor_link:
+  expected_processor: biogas_separator_v1
+
+mounting:
+  earth_embedded: true
+  automation_ready: true
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

@@ -1,0 +1,21 @@
+id: horse_manure
+display_name: Horse Manure
+description: >
+  Equine waste matter, often interspersed with straw bedding, resulting in lower moisture but
+  higher fibrous content. Suited for high-carbon anaerobic digestion blends.
+origin: equine
+source_context: stable_aggregate
+moisture_content_pct: 65
+volatile_solids_pct: 70
+carbon_nitrogen_ratio: 30
+density_kg_per_m3: 880
+typical_pathogens:
+  - clostridium_perfringens
+  - streptococcus_equi
+  - rhodococcus_equi
+handling_requirements:
+  biosafety_level: 1
+  storage: ambient_or_shaded
+  safety: respirator_advised_for_dry_matter
+last_validated: 2025-03-25
+license: CC-BY-SA-4.0

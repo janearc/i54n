@@ -1,0 +1,202 @@
+sensors:
+  - id: pH
+    display_name: pH Sensor
+    description: Measures hydrogen ion concentration (acidity/basicity) of a solution.
+    units: pH
+    datatype: float
+    range: [0.0, 14.0]
+    measurement_principle: potentiometric
+    mounting: submerged
+    calibration_protocol: two_point_buffer
+    maintenance_schedule: monthly
+    failure_modes: [drift, probe_degradation, fouling]
+
+  - id: osmolality
+    display_name: Osmolality Sensor
+    description: Measures solute concentration in solution.
+    units: mOsm/kg
+    datatype: float
+    range: [0, 3000]
+    measurement_principle: freezing_point_depression
+    mounting: inline
+    calibration_protocol: single_point_standard
+    maintenance_schedule: quarterly
+    failure_modes: [clogging, calibration_drift]
+
+  - id: temperature
+    display_name: Temperature Sensor
+    description: Measures fluid temperature.
+    units: °C
+    datatype: float
+    range: [-10, 150]
+    measurement_principle: thermocouple
+    mounting: submerged
+    calibration_protocol: factory
+    maintenance_schedule: biannual
+    failure_modes: [wire_break, read_error]
+
+  - id: tds
+    display_name: Total Dissolved Solids Sensor
+    description: Measures concentration of dissolved substances.
+    units: ppm
+    datatype: float
+    range: [0, 10000]
+    measurement_principle: conductivity
+    mounting: submerged
+    calibration_protocol: two_point_solution
+    maintenance_schedule: monthly
+    failure_modes: [fouling, signal_noise]
+
+  - id: gravity
+    display_name: Gravity Sensor
+    description: Measures specific gravity (relative density) of liquid.
+    units: SG
+    datatype: float
+    range: [0.980, 1.200]
+    measurement_principle: float_or_digital_density
+    mounting: inline
+    calibration_protocol: manual_baseline
+    maintenance_schedule: monthly
+    failure_modes: [bubble_interference, mechanical_error]
+
+  - id: abv
+    display_name: ABV (Alcohol by Volume)
+    description: Estimated alcohol content, derived from gravity change.
+    units: %
+    datatype: float
+    range: [0.0, 30.0]
+    derived_from: [gravity, temperature]
+    calculation_method: og_fg_difference_adjusted
+    maintenance_schedule: software_check_only
+    failure_modes: [input_error, invalid_range]
+
+  - id: methane_output
+    display_name: Methane Output Rate
+    description: Volume of methane produced per unit time.
+    units: L/h
+    datatype: float
+    range: [0.0, 500.0]
+    measurement_principle: flow_meter
+    mounting: gas_outlet
+    calibration_protocol: volumetric_standard
+    maintenance_schedule: monthly
+    failure_modes: [flow_blockage, gas_leak]
+
+  - id: biogas_volume
+    display_name: Total Biogas Volume
+    description: Total accumulated biogas produced during process cycle.
+    units: L
+    datatype: float
+    range: [0.0, 100000.0]
+    measurement_principle: volumetric_accumulator
+    mounting: header_tank
+    calibration_protocol: factory
+    maintenance_schedule: quarterly
+    failure_modes: [sensor_drift, condensation_blockage]
+
+  - id: digestion_rate
+    display_name: Digestion Rate
+    description: Rate of organic matter breakdown.
+    units: g_COD_removed/day
+    datatype: float
+    range: [0.0, 100000.0]
+    measurement_principle: inferred_from_input_output_analysis
+    derived_from: [input_mass_flow, output_digestate_mass]
+    maintenance_schedule: software_validation
+    failure_modes: [calculation_error, drift]
+
+  - id: pathogen_level
+    display_name: Pathogen Load
+    description: Estimated microbial pathogen concentration in reactor.
+    units: CFU/mL
+    datatype: float
+    range: [0, 1e9]
+    measurement_principle: rapid_biological_sensor_or_assay
+    mounting: sampling_port
+    calibration_protocol: benchmark_reference
+    maintenance_schedule: daily_or_sampling_event
+    failure_modes: [cross_contamination, false_negative]
+
+  - id: co2_output
+    display_name: CO₂ Output Rate
+    description: Volume of carbon dioxide produced per unit time.
+    units: L/h
+    datatype: float
+    range: [0.0, 500.0]
+    measurement_principle: gas_flow_sensor
+    mounting: gas_outlet
+    calibration_protocol: volumetric_standard
+    maintenance_schedule: monthly
+    failure_modes: [flow_sensor_failure, clogging]
+
+  - id: ch4_purity
+    display_name: Methane Purity
+    description: Proportion of methane in total biogas.
+    units: %
+    datatype: float
+    range: [0.0, 100.0]
+    measurement_principle: gas_chromatography_or_ndir
+    mounting: inline_gas_analysis
+    calibration_protocol: standard_gas_mix
+    maintenance_schedule: quarterly
+    failure_modes: [sensor_drift, contamination]
+
+  - id: sludge_level
+    display_name: Sludge Depth
+    description: Measures level of accumulated sludge at base of reactor.
+    units: cm
+    datatype: float
+    range: [0, 1000]
+    measurement_principle: ultrasonic_or_radar
+    mounting: bottom-facing_probe
+    calibration_protocol: manual_depth_check
+    maintenance_schedule: monthly
+    failure_modes: [signal_loss, biofilm_interference]
+
+  - id: gas_pressure
+    display_name: Gas Pressure Sensor
+    description: Measures internal gas pressure in the bioreactor headspace.
+    units: kPa
+    datatype: float
+    range: [0.0, 500.0]
+    measurement_principle: strain_gauge_or_piezoelectric
+    mounting: headspace_dome
+    calibration_protocol: zero_and_span
+    maintenance_schedule: quarterly
+    failure_modes: [sensor_drift, blockage, overpressure_damage]
+
+  - id: methane_concentration
+    display_name: Methane Concentration Sensor
+    description: Measures methane (CH₄) concentration in collected biogas.
+    units: %
+    datatype: float
+    range: [0.0, 100.0]
+    measurement_principle: infrared_absorption
+    mounting: inline_gas_stream
+    calibration_protocol: reference_gas_standard
+    maintenance_schedule: monthly
+    failure_modes: [contamination, calibration_drift]
+
+  - id: volume_occupied
+    display_name: Volume Occupied Sensor
+    description: Estimates total slurry and gas fill level in the digester.
+    units: m3
+    datatype: float
+    range: [0.0, 5000.0]
+    measurement_principle: ultrasonic_or_floating_sensor_array
+    mounting: top_probe_or_surface_array
+    calibration_protocol: geometric_mapping
+    maintenance_schedule: semiannual
+    failure_modes: [sensor_fouling, inaccurate_echo]
+
+  - id: slurry_density
+    display_name: Slurry Density Sensor
+    description: Measures the density of manure slurry for process control.
+    units: kg/m3
+    datatype: float
+    range: [900.0, 1400.0]
+    measurement_principle: vibrating_fork_or_pressure_differential
+    mounting: submerged
+    calibration_protocol: liquid_density_reference
+    maintenance_schedule: monthly
+    failure_modes: [build_up_on_sensor, fouling, misread_due_to_gas_content]

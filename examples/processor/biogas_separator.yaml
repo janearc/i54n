@@ -1,0 +1,50 @@
+id: biogas_separator_v1
+version: 1.0
+display_name: JP7 Modular Biogas Separator (v1)
+description: >
+  A modular processor unit designed to separate raw biogas from anaerobic digesters
+  into methane and other constituent gases. Includes inline purification and compression
+  capabilities for downstream energy use or storage.
+
+type: processor
+role: gas_separator
+
+inputs:
+  - name: raw_biogas
+    type: gas
+
+outputs:
+  - name: purified_methane
+    type: gas
+  - name: off_gas
+    type: gas
+  - name: condensate
+    type: liquid
+
+instrumentation:
+  sensors:
+    - gas_pressure
+    - methane_concentration
+    - flow_rate
+    - temperature
+  sample_resolution_minutes: 5
+
+network:
+  onboard_computer:
+    type: sbc_linux
+    connectivity: [cat6, wifi]
+    control_interface: cli_rpc
+    logging_output: kafka_stream
+    dashboard: grafana_compatible
+
+power:
+  source: grid_or_solar
+  backup: battery_or_generator
+
+mounting:
+  configuration: skid_mounted
+  automation_ready: true
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25
