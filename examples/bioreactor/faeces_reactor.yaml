@@ -1,5 +1,5 @@
 id: bioreactor_faeces_digester_5000m3
-version: 1.1
+version: 1.0
 display_name: JP7 Shallow Agricultural Anaerobic Digester (5000m³)
 description: >
   A high-surface-area, shallow-depth bioreactor optimized for anaerobic digestion
@@ -10,13 +10,8 @@ description: >
 type: bioreactor
 role: anaerobic_digester
 
-preferred_biomass:
-  - cow_manure
-  - horse_manure
-
-biosafety:
-  bsl: 1
-  notes: Standard agricultural handling precautions advised.
+biomass_property_ref: examples/biomass/nannochloropsis.yaml
+bioreactor_type_ref: examples/bioreactor/arc_shallow_15000L_seawater.yaml
 
 vessel:
   shape: trench
