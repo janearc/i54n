@@ -1,0 +1,59 @@
+id: abe_fermentation_separated
+reaction_class: abe_fermentation
+display_name: ABE Fermentation with Inline Separation
+description: >
+  Acetone-Butanol-Ethanol (ABE) fermentation using Clostridium species with integrated 
+  product separation. Designed for use in continuous-culture FAST bioreactors to improve 
+  solvent yields and reduce cellular toxicity.
+
+inputs_required:
+  - cassava_sugar_hydrolysate
+  - clostridium_spores
+  - yeast_extract
+  - phosphate_buffer
+
+environmental_targets:
+  temperature_c: [32, 38]
+  pH: [5.5, 6.3]
+  oxygen: anaerobic
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - pressure
+  - turbidity
+  - dissolved_oxygen
+  - emulsion_density
+  - solvent_concentration
+
+control_capabilities_required:
+  - temp_control
+  - substrate_feed
+  - phase_separation
+  - biomass_recycle
+  - gas_release
+
+biosafety:
+  bsl: 1
+  notes: Wild-type or engineered *Clostridium acetobutylicum*. Use anaerobic protocols.
+
+product_yields:
+  target_products:
+    - name: butanol
+      max_concentration_g_per_l: 20
+    - name: acetone
+      max_concentration_g_per_l: 8
+    - name: ethanol
+      max_concentration_g_per_l: 5
+  separation_efficiency_percent: 80
+
+instrumentation_recommendations:
+  - pH
+  - temperature
+  - solvent_concentration
+  - emulsion_density
+  - turbidity
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-26
