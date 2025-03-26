@@ -1,0 +1,46 @@
+id: natural_organic_reduction
+display_name: Natural Organic Reduction (Human Composting)
+description: >
+  An aerobic thermophilic biological process used for the controlled decomposition
+  of human or large mammalian remains into stable, soil-like material. This reaction
+  is conducted in enclosed vessels with oxygen control, moisture monitoring, and
+  temperature regulation. Designed for environmentally conscious body disposition.
+
+reaction_class: natural_organic_reduction
+biosafety:
+  bsl: 1
+  notes: Requires ethical and legal compliance. Not for use outside of licensed jurisdictions.
+
+inputs_required:
+  - human_remains
+  - bulking_agent  # e.g., wood chips, alfalfa, straw
+  - moisture_control_medium  # e.g., sawdust or dry leaves
+
+environmental_targets:
+  temperature_c: [50, 70]  # thermophilic range
+  oxygen: aerobic
+  humidity_percent: [40, 60]
+  duration_days: 30
+
+monitoring_metrics:
+  - temperature
+  - humidity
+  - oxygen_level
+  - pathogen_level
+  - decomposition_progress
+
+control_capabilities_required:
+  - temp_control
+  - oxygenation
+  - humidity_control
+  - agitation
+  - sampling_port
+
+output_products:
+  - name: composted_remains
+    type: soil_amendment
+    biomass_property_ref: examples/biomass/composted_remains.yaml
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

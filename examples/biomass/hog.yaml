@@ -1,0 +1,48 @@
+id: hog_manure
+display_name: Hog Manure
+description: >
+  Biomass derived from swine excrement, typically collected from commercial pig farms.
+  Rich in organic material and nitrogen, making it a high-yield candidate for anaerobic digestion.
+  Requires pathogen monitoring and hydrogen sulfide management.
+
+classification:
+  source_species: sus_scrofa_domestica
+  collection_method: slurry_or_scrape
+
+metabolic_class: heterotrophic
+reaction_type: anaerobic_digestion
+
+preferred_reactors:
+  - bioreactor_faeces_digester_5000m3
+  - arc_heavy_1500L
+
+growth_parameters:
+  solids_content_percent: 15  # Swine waste is typically wetter than cattle or poultry
+  c_n_ratio: [10, 14]
+  moisture_content_percent: [80, 85]
+  pathogen_load_estimate: high
+  odor_intensity: extreme
+
+hazards:
+  - hydrogen_sulfide_production
+  - zoonotic_pathogens (e.g. E. coli, salmonella)
+  - ammonia_release
+
+monitoring_recommendations:
+  - pH
+  - temperature
+  - ammonia_concentration
+  - hydrogen_sulfide_level
+  - methane_output
+  - digestion_rate
+
+yield_estimates:
+  methane_m3_per_tonne: [50, 80]
+  digestate_volume_percent: 70
+
+biomass_property_ref: examples/biomass/schema.yaml
+category: manure
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

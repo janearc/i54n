@@ -1,0 +1,48 @@
+iid: poultry_manure
+display_name: Poultry Manure
+description: >
+  Biomass derived from poultry waste, typically from chickens or turkeys. 
+  Rich in nitrogen and phosphorus, making it a potent substrate for anaerobic digestion.
+  Requires dilution or co-digestion due to high ammonia and urea content.
+
+classification:
+  source_species: galliformes
+  subtypes: [chicken, turkey, duck]
+  collection_method: dry_litter_or_wet_scrape
+
+metabolic_class: heterotrophic
+reaction_type: anaerobic_digestion
+
+preferred_reactors:
+  - bioreactor_faeces_digester_5000m3
+  - arc_heavy_1500L
+
+growth_parameters:
+  solids_content_percent: 25  # Average dry matter
+  c_n_ratio: [6, 8]           # Carbon to Nitrogen ratio
+  moisture_content_percent: [70, 75]
+  pathogen_load_estimate: high
+  odor_intensity: high
+
+hazards:
+  - high_ammonia_emissions
+  - potential_pathogens (salmonella, campylobacter)
+  - corrosion_risk (due to uric acid)
+
+monitoring_recommendations:
+  - pH
+  - temperature
+  - ammonia_concentration
+  - methane_output
+  - digestion_rate
+
+yield_estimates:
+  methane_m3_per_tonne: [60, 100]
+  digestate_volume_percent: 65
+
+biomass_property_ref: examples/biomass/schema.yaml
+category: manure
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

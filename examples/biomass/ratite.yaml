@@ -1,0 +1,58 @@
+id: ostrich_manure
+display_name: Ostrich Manure
+description: >
+  Droppings from *Struthio camelus*, the world's largest bird. Ostrich manure is a high-nitrogen, mineral-rich excrement
+  commonly used in African agriculture, with increasing interest in anaerobic digestion for methane and fertilizer recovery.
+
+classification:
+  kingdom: Animalia
+  phylum: Chordata
+  class: Aves
+  order: Struthioniformes
+  family: Struthionidae
+  genus: Struthio
+  species: camelus
+
+biomass_type: excrement
+source_animals: [ostrich]
+collection_method: dry_sweep_or_manual
+form: semi_dry_pellet
+color: brownish_black
+odor: strong_nitrogenic
+handling_precautions: >
+  Use gloves and respiratory protection in enclosed spaces. Manure can emit ammonia and carry pathogens if not composted.
+
+composition:
+  moisture_content_percent: 55  # lower than cow, higher than poultry
+  total_solids_percent: 45
+  volatile_solids_percent: 70
+  nitrogen_percent: 1.6
+  phosphorus_percent: 1.2
+  potassium_percent: 0.9
+  fiber_content_percent: 15
+
+biogas_yield_estimate:
+  methane_m3_per_kg_vs: 0.35
+  notes: >
+    Comparable to poultry litter when pretreated or mixed with higher-moisture substrates like food waste.
+
+compatible_reactors:
+  - faeces_digester_5000m3
+  - bioreactor_25l_bsl2_research_v1
+  - experimental_mixed_feed_vat
+
+use_cases:
+  - anaerobic_digestion
+  - composting
+  - soil_amendment
+  - biochar_feedstock
+
+biosafety:
+  bsl: 1
+  zoonotic_risk: low
+  notes: >
+    Minimal risk when handled with standard farm biosafety practices; pathogen load drops after digestion or composting.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

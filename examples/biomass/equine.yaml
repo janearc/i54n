@@ -1,0 +1,46 @@
+id: equine_manure
+display_name: Equine Manure
+description: >
+  Biomass from horse and related equids. High in fibrous material due to herbivorous diet,
+  making it suitable for anaerobic digestion when pre-macerated. Lower pathogen load than hog manure,
+  but high bedding content (straw or shavings) may require screening or pre-processing.
+
+classification:
+  source_species: equus_ferus_caballus
+  collection_method: stall_scrape_or_manual_collection
+
+metabolic_class: heterotrophic
+reaction_type: anaerobic_digestion
+
+preferred_reactors:
+  - bioreactor_faeces_digester_5000m3
+  - arc_heavy_1500L
+
+growth_parameters:
+  solids_content_percent: 25
+  c_n_ratio: [25, 35]
+  moisture_content_percent: [65, 75]
+  pathogen_load_estimate: moderate
+  bedding_content: variable  # note for preprocessing/maceration
+
+hazards:
+  - ammonia_release
+  - clostridium_spp_presence (rare but notable)
+
+monitoring_recommendations:
+  - pH
+  - temperature
+  - slurry_density
+  - methane_output
+  - digestion_rate
+
+yield_estimates:
+  methane_m3_per_tonne: [30, 60]
+  digestate_volume_percent: 65
+
+biomass_property_ref: examples/biomass/schema.yaml
+category: manure
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

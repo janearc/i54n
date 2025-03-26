@@ -1,0 +1,56 @@
+id: guano_bird_or_bat
+display_name: Guano (Seabird or Bat)
+description: >
+  Highly nitrogen-rich excrement from seabirds or bats. Historically used as fertilizer,
+  and increasingly considered in biochemical and anaerobic digestion systems as a potent
+  nitrogen supplement or metabolic catalyst. Requires care due to pathogen and ammonia load.
+
+classification:
+  type: excrement
+  origin: avian_or_chiropteran
+  usage_contexts:
+    - anaerobic_digestion
+    - compost_activation
+    - soil_enrichment
+
+biomass_properties:
+  moisture_content_percent: [10, 30]
+  nitrogen_percent_dry: [8, 16]
+  phosphorus_percent_dry: [8, 20]
+  potassium_percent_dry: [1, 2]
+  carbon_nitrogen_ratio: [4, 6]
+  trace_elements:
+    - calcium
+    - sulfur
+    - magnesium
+    - iron
+  pathogen_risk: moderate
+  volatility: high_ammonia
+  odor_profile: pungent_uric
+
+growth_environment:
+  collection_notes: >
+    Bat guano often harvested from cave environments, requires filtration and drying;
+    seabird guano collected from island colonies or coastal cliffs. Risk of histoplasmosis
+    in enclosed environments without PPE.
+
+biosafety:
+  bsl: 2
+  notes: >
+    May contain fungal spores and enteric pathogens. PPE, ventilation, and respirator advised
+    when handling raw material.
+
+extraction_recommendations:
+  - compost_with_c_high_biomass
+  - dilute_in_slurry_for_digesters
+  - combine_with_urease_inhibitor_for_safe_storage
+
+applications:
+  - fertilizer
+  - biogas_booster
+  - nitrate_feedstock
+  - historical_explosives_feedstock (not recommended)
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

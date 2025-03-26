@@ -1,0 +1,51 @@
+id: human_corpse
+display_name: Human Corpse
+description: >
+  A deceased human body prepared for lawful, ethical decomposition via natural organic reduction (NOR).
+  Must comply with all jurisdictional regulations concerning medical, cultural, and legal treatment of remains.
+
+classification:
+  kingdom: Animalia
+  phylum: Chordata
+  class: Mammalia
+  order: Primates
+  species: Homo sapiens
+
+biomass_type: soft_tissue_and_bone
+source_context: mortuary_or_medical
+legal_requirements:
+  certified_deceased: true
+  consent_documentation: required
+  jurisdictional_approval: required
+  infectious_disease_screening: recommended
+
+approximate_composition:
+  water_percent: 65
+  fat_percent: 15
+  protein_percent: 15
+  ash_percent: 5
+
+decomposition_profile:
+  initiates_within_hours: true
+  thermophilic_window_hours: 48–72
+  full_transformation_days: 30
+
+biosafety:
+  bsl: 1
+  notes: >
+    Treated as non-infectious unless otherwise indicated. Requires respectful handling,
+    closed system operation, and privacy assurance.
+
+monitoring_recommendations:
+  - temperature
+  - humidity
+  - oxygen_level
+  - pathogen_level
+  - decomposition_progress
+
+compatible_reactions:
+  - natural_organic_reduction
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25
