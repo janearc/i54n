@@ -1,0 +1,100 @@
+id: bioreactor_fast_dab_1000l
+version: 1.0
+display_name: DAB.bio FAST Bioreactor (1000L)
+description: >
+  Fermentation Accelerated by Separation Technology (FAST) bioreactor developed by Delft Advanced Biorenewables.
+  Integrates microbial fermentation with in-situ product separation, optimized for continuous high-yield processing
+  of bio-based chemicals like butanol, terpenes, and aromatic alcohols.
+
+type: bioreactor
+role: fermentation_separation_coupled
+
+biomass_property_ref: examples/biomass/butanol_producing_clostridium.yaml
+bioreactor_type_ref: examples/bioreactor/arc_modular_fermentation_separator.yaml
+
+vessel:
+  shape: cylinder
+  volume_l: 1000
+  construction:
+    material: stainless_steel_316L
+    double_wall: true
+    jacketed: true
+    bracing:
+      external: true
+      mounting: skid_mount
+  drain:
+    type: conical_bottom
+    powered: true
+    metered: true
+
+compartments:
+  - name: fermentation_chamber
+    purpose: microbial fermentation
+  - name: separation_module
+    purpose: inline product separation (emulsion handling)
+
+separation:
+  method: liquid-liquid_phase_separation
+  interface: inline_recirculation
+  product_stream: oily_product_phase
+  biomass_recycle: true
+
+access:
+  input_ports:
+    - name: substrate_feed
+      type: fluid
+    - name: nutrient_injection
+      type: fluid
+  output_ports:
+    - name: product_stream
+      type: fluid
+    - name: cell_waste
+      type: slurry
+  sample_port: true
+  sanitation:
+    cip: true
+    sip: true
+
+agitation:
+  method: magnetic_stirring
+  baffles: true
+  recirculation_loop: true
+
+instrumentation:
+  sensors:
+    - pH
+    - temperature
+    - pressure
+    - dissolved_oxygen
+    - turbidity
+    - emulsion_density
+    - flow_rate_product
+  sample_resolution_minutes: 1
+
+visual_inspection:
+  cameras:
+    count: 1
+    modes: [frame_capture, live_stream]
+  viewport: true
+
+network:
+  onboard_computer:
+    type: sbc_linux
+    connectivity: [ethernet, wifi]
+    display: touchscreen
+    control_interface: gui_and_cli
+    logging_output: kafka_stream
+    dashboard: grafana_compatible
+
+power:
+  source: grid
+  backup: ups
+
+mounting:
+  floor_mounted: true
+  automation_ready: true
+  indoor_use_only: true
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-26
