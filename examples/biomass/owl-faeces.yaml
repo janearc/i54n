@@ -1,0 +1,43 @@
+id: owl_feces
+display_name: Owl Feces (Pelletized Guano)
+description: >
+  Fecal matter and regurgitated pellet waste from owls, often composed of digested meat proteins, fur, and bone fragments.
+  Though not traditionally used in large-scale digestion, it contains nitrogenous material and could be relevant for micro-scale or educational bioprocesses.
+
+classification:
+  kingdom: Animalia
+  phylum: Chordata
+  class: Aves
+  order: Strigiformes
+  common_name: Owl
+
+metabolic_origin: carnivore_digestion
+collection_method: pellet_collection
+waste_form: semi-solid_pellets
+
+biomass_profile:
+  moisture_content_pct: 25-40
+  nitrogen_pct: 3.2
+  phosphorus_pct: 1.1
+  potassium_pct: 0.8
+  organic_matter_pct: ~60
+  pathogen_load: moderate
+  odor_profile: musky, ammonia-sharp
+
+recommended_uses:
+  - micro_digester_feedstock
+  - organic fertilizer (non-edible crops)
+  - nitrogen supplementation
+  - lab-scale experimental digestion
+
+risks_and_handling:
+  - Use gloves and mask during handling due to pathogen potential.
+  - Avoid use in edible plant production due to zoonotic risk.
+  - Not suitable for direct human contact or open-system bioreactors.
+
+legal_notes: >
+  Collection from wild owls may be regulated under wildlife protection laws. Check local legislation.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25
