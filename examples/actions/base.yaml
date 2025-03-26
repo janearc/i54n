@@ -1,0 +1,41 @@
+actions:
+  - id: ethanol_shutoff
+    name: "Ethanol Pressure Release"
+    description: "Triggers venting in case of high ethanol pressure, preventing explosions."
+    trigger_conditions:
+      - sensor: gas_pressure
+        threshold: 90% max_pressure
+    action_type: vent
+    system_affected: gas_release
+    result: successful_vent
+
+  - id: mrsa_containment
+    name: "MRSA Culture Containment"
+    description: "Shutdown and sterilization protocol for MRSA bioreactor."
+    trigger_conditions:
+      - sensor: pathogen_level
+        threshold: high
+    action_type: containment
+    system_affected: reactor
+    result: system_locked_down, culture_sterilized
+
+  - id: general_shutdown
+    name: "Emergency Shutdown"
+    description: "General shutdown in case of system failure or parameter violation."
+    trigger_conditions:
+      - sensor: temperature
+        threshold: critical
+      - sensor: gas_concentration
+        threshold: toxic
+    action_type: shutdown
+    system_affected: entire_system
+    result: reactor_powered_down, system_safe
+
+  - id: sanitization
+    name: "Reactor Sanitization"
+    description: "Complete sanitation of reactor to prevent contamination."
+    trigger_conditions:
+      - manual_trigger: true
+    action_type: sanitize
+    system_affected: entire_system
+    result: reactor_sanitized
