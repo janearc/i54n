@@ -1,0 +1,84 @@
+id: bioreactor_25l_bsl2_research_v1
+display_name: BSL-2 Research Bioreactor (25L)
+description: >
+  A compact, sealed 25L stainless steel bioreactor for aerobic bacterial culture and biosafety level 2 applications.
+  Designed for pharmaceutical, clinical, and diagnostic microbiology R&D with full instrumentation and safety boundaries.
+version: 1.0
+
+vessel:
+  shape: cylinder
+  volume_l: 25
+  drain:
+    type: bottom_valve
+    powered: false
+    metered: false
+  construction:
+    material: stainless_steel
+    thickness_mm: 3
+    double_wall: true
+    jacketed: true
+    bracing:
+      internal: false
+      external: false
+      mounting: lab_bench
+
+access:
+  feed_ports:
+    - name: growth_medium
+      type: fluid
+    - name: bacterial_inoculum
+      type: fluid
+  co2_port: false
+  oxygenation_port: true
+  sample_port: true
+  sanitation:
+    spray_nozzles_internal: false
+    fire_suppression_inert_gas: false
+
+agitation:
+  impeller: true
+  surface_blade: false
+  sparging: false
+
+visual_inspection:
+  cameras:
+    count: 1
+    modes: [frame_capture]
+  viewport: true
+  led_lighting:
+    - position: overhead
+
+instrumentation:
+  sensors:
+    - temperature
+    - pH
+    - dissolved_oxygen
+    - turbidity
+  sample_resolution_minutes: 5
+
+network:
+  onboard_computer:
+    type: sbc_linux
+    connectivity: [usb, wifi]
+    display: minimal_lcd
+    control_interface: cli_rpc
+    logging_output: local_disk
+    dashboard: none
+
+biosafety:
+  bsl_max: 2
+  select_agent_supported: false
+  containment_level: sealed_bioreactor
+
+mounting:
+  floor_mounted: false
+  automation_ready: false
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25
+
+biosafety:
+  bsl: 2
+  select_agent: false
+  containment: standard_lab

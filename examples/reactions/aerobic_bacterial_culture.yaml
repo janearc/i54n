@@ -1,0 +1,48 @@
+reaction_class: aerobic_bacterial_culture
+version: 1.0
+
+description: >
+  Standard aerobic culture of bacterial organisms in liquid or semi-solid media.
+  Used in diagnostic microbiology, molecular biology, and biosafety-level research.
+
+inputs_required:
+  - water
+  - growth_medium
+  - bacterial_inoculum
+
+environmental_targets:
+  temperature_c: [30, 42]  # strain-dependent
+  pH: [6.5, 7.5]
+  oxygen: aerobic
+  agitation: optional  # depending on bioreactor and oxygenation strategy
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - dissolved_oxygen
+  - turbidity
+  - biomass_density
+
+control_capabilities_required:
+  - temp_control
+  - aeration
+  - sampling
+  - nutrient_feed (optional)
+
+biosafety:
+  bsl: 1_to_3
+  select_agent: conditional
+  containment: required_for_pathogenic_strains
+
+notes: >
+  This process can support both harmless lab strains (e.g., *E. coli* K-12) and BSL-2/3 organisms such as MRSA.
+  Bioreactor instrumentation must match the required safety and monitoring levels for the selected strain.
+
+examples:
+  - ecoli_k12_lab_growth
+  - staph_aureus_mrsa_research
+
+license: CC-BY-SA-4.0
+contributor: janearc
+last_updated: 2025-03-25
+

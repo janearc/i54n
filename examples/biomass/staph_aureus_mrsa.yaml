@@ -1,0 +1,43 @@
+id: staph_aureus_mrsa
+display_name: Staphylococcus aureus (MRSA)
+description: >
+  Methicillin-resistant Staphylococcus aureus, a gram-positive bacterium known for its resistance to beta-lactam antibiotics.
+  Used in diagnostic assay development, antimicrobial resistance studies, and controlled academic microbiology environments.
+
+organism:
+  genus: Staphylococcus
+  species: aureus
+  strain: MRSA
+  classification: gram_positive
+  morphology: cocci
+  resistance_profile:
+    - methicillin
+    - penicillin
+    - oxacillin
+
+biosafety:
+  bsl: 2
+  select_agent: false
+
+growth_requirements:
+  medium:
+    - tryptic_soy_broth
+    - methicillin:
+        concentration: 4 µg/mL
+  temperature_c: 37
+  oxygen: aerobic
+  pH_range: [6.5, 7.5]
+
+biomass_properties:
+  yield_g_per_l: ~1.2
+  doubling_time_min: 30
+  max_viable_density_cells_per_ml: 1e9
+
+applications:
+  - antimicrobial resistance research
+  - diagnostic tool development
+  - clinical microbiology education
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

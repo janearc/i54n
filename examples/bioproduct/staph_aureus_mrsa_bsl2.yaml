@@ -1,0 +1,48 @@
+id: staph_aureus_mrsa_bsl2
+display_name: Staphylococcus aureus (MRSA) Biomass – BSL-2
+description: >
+  Lab-grown biomass of methicillin-resistant Staphylococcus aureus (MRSA), strain specified for diagnostic, antimicrobial resistance, and biosafety-level-2 research applications.
+
+product_type: biomass
+organism:
+  genus: Staphylococcus
+  species: aureus
+  strain: MRSA
+  common_name: MRSA
+  biosafety_level: 2
+  select_agent: false
+
+growth_conditions:
+  medium:
+    - tryptic_soy_broth
+    - methicillin:
+        concentration: 4 µg/mL
+  temperature_c: 37
+  oxygen: aerobic
+  containment: hepa_filtered_positive_pressure
+
+biomass_properties:
+  morphology: gram_positive_cocci
+  growth_rate: moderate
+  yield_g_per_l: ~1.2
+  doubling_time_min: 30
+  resistance_profile:
+    - methicillin
+    - penicillin
+    - oxacillin
+
+applications:
+  - antimicrobial resistance research
+  - diagnostic assay development
+  - educational microbiology
+  - genetic studies
+
+traceability:
+  organism_reference: biomass/staph_aureus_mrsa.yaml
+  reaction_reference: reactions/aerobic_bacterial_culture.yaml
+  reactor_reference: bioreactor/25l_bsl2_research_v1.yaml
+
+bsl_classification: BSL-2
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

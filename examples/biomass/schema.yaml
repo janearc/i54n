@@ -1,0 +1,71 @@
+id: biomass_schema_v1
+display_name: Biomass Definition Schema
+description: >
+  Standard schema for defining a biological agent or culture used in bioreactors, including taxonomic classification,
+  metabolic properties, growth parameters, and relevant industrial applications.
+
+required_fields:
+  - id
+  - display_name
+  - description
+  - classification
+  - metabolic_class
+  - reaction_type
+  - growth_parameters
+  - nutrient_requirements
+  - monitoring_recommendations
+  - extraction_methods
+  - applications
+  - safety_notes
+  - license
+  - contributor
+  - date_created
+
+field_definitions:
+  id: Unique string identifier.
+  display_name: Human-readable name.
+  description: >
+    Long-form markdown-compatible description of the organism, use case, and notable traits.
+  classification:
+    kingdom: Biological kingdom.
+    phylum: Biological phylum.
+    class: Optional class, if known.
+    genus: Genus of the biomass.
+    species: Species or strain descriptor.
+  metabolic_class: >
+    One of [phototrophic, heterotrophic, chemotrophic, facultative, mixotrophic].
+  reaction_type: >
+    Example: photosynthesis, fermentation, methanogenesis, etc.
+  preferred_reactors: >
+    List of compatible reactor geometries or types, e.g. flat_plate, shallow_pan.
+  growth_parameters:
+    temperature_c_optimal: Numeric.
+    temperature_c_range: List [min, max].
+    pH_optimal: Numeric.
+    pH_range: List [min, max].
+    salinity_g_per_l: List [min, max], if applicable.
+    light_intensity_lux: List [min, max], if phototrophic.
+    light_spectrum_preference: List of [blue, red, white, etc.].
+    co2_concentration_ppm: List [min, max], if phototrophic.
+    doubling_time_hours: Expected division rate.
+  nutrient_requirements:
+    media: Name of required base media (e.g., f2, zarrouk, TSA).
+    nitrogen_source: e.g., nitrate, ammonia.
+    phosphorus_source: e.g., phosphate.
+    trace_metals: Boolean or string list.
+    vitamins: Optional, if required.
+  monitoring_recommendations: List of sensor targets, e.g., pH, temperature, lux.
+  extraction_methods: List of preferred methods, e.g., centrifugation, filtration.
+  applications: List of industrial or lab uses.
+  safety_notes: Freeform markdown string.
+  license: SPDX-compatible license tag.
+  contributor: Author handle or contact.
+  date_created: YYYY-MM-DD.
+
+optional_fields:
+  strain: Additional specifier.
+  oxygen_tolerance: aerobic, anaerobic, facultative.
+  biomass_properties:
+    yield_g_per_l: Typical dry mass yield.
+    doubling_time_min: Division time in minutes.
+    max_viable_density_cells_per_ml: Upper bound cell density.
