@@ -1,0 +1,44 @@
+iid: owl_guano_biogas
+display_name: Owl Guano Anaerobic Digestion for Biogas
+description: >
+  Anaerobic digestion of owl guano for biogas (methane) production. Optimized for high-nitrogen,
+  high-mineral content, with slow input throughput due to volume constraints. Useful in research
+  and niche bioenergy applications.
+
+reaction_class: anaerobic_digestion
+biomass_ref:
+  - examples/biomass/owl-faeces.yaml
+
+preferred_bioreactors:
+  - examples/bioreactor/bioreactor_25l_bsl2_research_v1.yaml
+  - examples/bioreactor/faeces_reactor.yaml
+
+inputs_required:
+  - owl_guano
+  - water
+
+environmental_targets:
+  temperature_c: [32, 38]
+  pH: [6.5, 7.8]
+  oxygen: none
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - gas_pressure
+  - methane_concentration
+  - volume_occupied
+
+control_capabilities_required:
+  - temp_control
+  - agitation
+  - gas_venting
+  - digestate_drain
+
+outputs_expected:
+  - methane_gas
+  - nutrient_rich_digestate
+
+safety_notes: >
+  Owl guano may contain zoonotic pathogens. Handle with biosafety protocols consistent with BSL-2 lab practices,
+  including aerosol minimization and sample deactivation prior to open handling.
