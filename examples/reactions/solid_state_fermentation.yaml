@@ -1,0 +1,54 @@
+reaction_class: solid_state_fermentation
+display_name: Solid State Fermentation (SSF)
+description: >
+  A surface-driven fermentation process in low-moisture, non-submerged substrates.
+  Common in traditional fermentation starters (koji, tempeh), enzyme production, and fungal-based bioproducts.
+  Requires tight thermal and humidity control, oxygenation, and non-liquid nutrient delivery.
+
+biomass:
+  species: Aspergillus_oryzae
+  strain_notes: >
+    High-amylase koji mold, used for soy fermentation, enzyme production, and starch conversion.
+    Other organisms may include Rhizopus, Monascus, or Bacillus species for diverse applications.
+
+inputs_required:
+  - substrate (e.g., rice, soy, wheat bran)
+  - inoculant (starter mold spores or culture)
+  - humidity
+  - oxygen
+
+environmental_targets:
+  temperature_c: [28, 38]
+  humidity_percent: [85, 95]
+  pH_range: [5.0, 6.5]
+  oxygen: high
+  agitation: none (optional remixing)
+
+monitoring_metrics:
+  - temperature
+  - humidity
+  - pH (optional)
+  - gas_output (optional)
+  - substrate_color (optical monitoring)
+
+control_capabilities_required:
+  - temp_control
+  - humidity_control
+  - oxygenation
+  - substrate_rotation_or_mixing (optional)
+  - sampling_port
+  - camera_monitoring (recommended)
+
+reaction_goals:
+  - enzyme_production
+  - flavor_development
+  - fermentation_starter_material
+
+notes:
+  - Typically done in shallow trays or stacked flatbed fermenters for surface area and airflow.
+  - Can be initiated in a humid incubator cabinet or climate-controlled SSF chamber.
+  - Highly sensitive to contamination; sterile handling and well-timed inoculation are key.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

@@ -1,0 +1,61 @@
+reaction_class: photosynthesis
+display_name: Algal Photosynthesis (Phototrophic Biomass Production)
+description: >
+  Light-driven conversion of CO₂ into organic biomass using phototrophic organisms such as algae or cyanobacteria.
+  Requires sustained illumination in the photosynthetically active radiation (PAR) spectrum, with nutrient and CO₂ enrichment.
+
+biomass:
+  species: Spirulina_platensis
+  strain_notes: >
+    High-efficiency cyanobacterium tolerant of elevated pH, warm temperatures, and dense culture.
+    Other variants may require different salinity or temperature profiles.
+
+inputs_required:
+  - water
+  - nitrogen_source (e.g., urea or nitrate)
+  - phosphate
+  - trace_minerals
+  - carbon_dioxide
+  - light (400–700nm PAR)
+
+environmental_targets:
+  temperature_c: [30, 38]
+  pH_range: [8.5, 10.5]
+  salinity: low_to_medium
+  oxygen: saturated_or_high
+  redox: oxidative
+  light_intensity_lux: [15_000, 30_000]
+  light_cycle: [16, 8] # hours light, dark
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - tds
+  - lux
+  - osmolality
+  - dissolved_o2
+  - co2_input_rate
+  - biomass_density (optional via turbidity or chlorophyll fluorescence)
+
+control_capabilities_required:
+  - light_control (spectrum, intensity)
+  - co2_injection
+  - temp_control
+  - agitation
+  - sampling_port
+  - nutrient_feed
+  - gas_exchange_valve
+
+reaction_goals:
+  - biomass_production
+  - oxygen
+  - carbon_capture
+
+notes:
+  - Excess biomass may require periodic harvesting or recirculation filtering.
+  - Closed-loop gas management systems can optimize carbon efficiency and reduce O₂ inhibition.
+  - Shallow, wide reactors with distributed lighting optimize yield per watt.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

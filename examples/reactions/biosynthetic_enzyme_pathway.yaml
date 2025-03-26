@@ -1,0 +1,61 @@
+reaction_class: biosynthetic_enzyme_pathway
+display_name: Recombinant Biosynthesis of Proteins or Enzymes
+description: >
+  Controlled biological expression of target proteins through genetically engineered host organisms.
+  Used in the production of pharmaceutical compounds, industrial enzymes, and synthetic biology applications.
+  Requires precise environmental regulation, sterile conditions, and often multi-stage fermentation protocols.
+
+biomass:
+  species: Escherichia_coli
+  strain_notes: >
+    High-expression plasmid strain with inducible promoter (e.g., T7). May require antibiotic selection,
+    IPTG induction, and heat shock transformation. Other chassis organisms: Saccharomyces, CHO, Pichia.
+
+inputs_required:
+  - sterile_growth_medium
+  - inducers (e.g., IPTG, arabinose)
+  - antibiotics (e.g., ampicillin)
+  - oxygen (aerobic culture)
+  - carbon_source (e.g., glucose or glycerol)
+  - buffer (e.g., phosphate)
+
+environmental_targets:
+  temperature_c: [28, 42]
+  pH_range: [6.8, 7.4]
+  dissolved_o2: >40%
+  redox: oxidative
+  osmolality_tolerance: medium
+  agitation: high
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - dissolved_o2
+  - tds
+  - optical_density
+  - osmolality
+  - pressure (if sealed or gas-fed)
+  - inductor concentration (optional)
+
+control_capabilities_required:
+  - temp_control
+  - o2_injection_or_airflow
+  - agitation
+  - nutrient_feed
+  - sampling_port
+  - sterile_steam_or_uv_sanitization
+  - multi-phase_control (e.g., growth → induction)
+
+reaction_goals:
+  - target_protein_expression
+  - high_cell_density
+  - post-process recovery (e.g., filtration, centrifugation, affinity resin)
+
+notes:
+  - Downstream purification steps not included in this process definition but expected.
+  - Aeration and oxygen availability are major rate-limiting factors in high-density cultures.
+  - Risk of contamination or plasmid loss necessitates robust sterilization and monitoring protocols.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

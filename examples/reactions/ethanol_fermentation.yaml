@@ -1,0 +1,50 @@
+reaction_class: ethanol_fermentation
+display_name: Ethanol Fermentation (Yeast)
+description: >
+  Anaerobic fermentation of carbohydrate-rich substrates using yeast, typically Saccharomyces cerevisiae,
+  to produce ethanol and carbon dioxide. Common in beverage alcohol, industrial fuel production, and bioactive compound extraction.
+
+biomass:
+  species: Saccharomyces_cerevisiae
+  strain_notes: >
+    Typical high-alcohol-tolerant wine or champagne yeast. Variant strains may produce differing flavor compounds and tolerate varying sugar/osmotic levels.
+
+inputs_required:
+  - glucose
+  - yeast_nutrients
+  - water
+
+environmental_targets:
+  temperature_c: [20, 32]
+  pH_range: [3.5, 5.5]
+  oxygen: low_or_none
+  osmolality_tolerance: medium
+  salinity: low
+  light: none
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - gravity
+  - abv
+  - co2_output
+
+control_capabilities_required:
+  - temp_control
+  - nutrient_feed
+  - co2_release
+  - agitation (optional)
+  - sampling_port
+
+reaction_goals:
+  - ethanol
+  - co2
+
+notes:
+  - May require degassing or agitation if krausen forms and yeast adhesion becomes problematic.
+  - Ethanol toxicity can inhibit fermentation >14–16% ABV depending on strain and conditions.
+  - Gravity readings should be adjusted for temperature during active fermentation.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

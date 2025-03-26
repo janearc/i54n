@@ -1,0 +1,54 @@
+reaction_class: enzymatic_hydrolysis
+display_name: Enzymatic Hydrolysis of Biomass
+description: >
+  Catalytic breakdown of complex macromolecules (e.g., cellulose, hemicellulose, starch, protein)
+  into simpler monomers using specific enzymes under controlled conditions.
+  Used for producing fermentable sugars prior to alcohol production, or as part of waste valorization and feedstock conversion.
+
+biomass:
+  species: enzyme_cocktail
+  strain_notes: >
+    May include cellulase, hemicellulase, amylase, protease, pectinase, or ligninase depending on substrate.
+    Can be sourced from fungal fermentation (e.g., Aspergillus), commercial mixes, or recombinant production.
+
+inputs_required:
+  - pretreated_biomass (e.g., shredded plant waste, cooked grain)
+  - water
+  - enzyme_mix (custom or off-shelf)
+  - optional_buffer (e.g., citrate, phosphate)
+
+environmental_targets:
+  temperature_c: [40, 60]
+  pH_range: [4.5, 6.0]
+  osmolality_tolerance: low_to_moderate
+  agitation: medium
+  dwell_time_hours: [4, 72]
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - viscosity
+  - tds
+  - reducing_sugar_concentration
+  - gravity
+
+control_capabilities_required:
+  - temp_control
+  - agitation
+  - timed_enzyme_dosing (optional)
+  - viscosity_monitoring (optional)
+  - sampling_port
+
+reaction_goals:
+  - polysaccharide_conversion
+  - sugar_release (glucose, xylose, arabinose, etc.)
+  - fermentation_ready_feedstock
+
+notes:
+  - Substrate often requires physical or chemical pre-treatment (e.g., steam explosion, dilute acid).
+  - Enzyme efficiency depends heavily on pH and temp matching.
+  - Output typically fed directly into ethanol, butanol, or lactic acid fermentation processes.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

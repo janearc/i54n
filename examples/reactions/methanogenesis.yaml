@@ -1,0 +1,56 @@
+reaction_class: methanogenesis
+display_name: Targeted Methane Production via Methanogenesis
+description: >
+  Biological conversion of carbon compounds to methane (CH₄) by methanogenic archaea.
+  Operates under strict anaerobic conditions and optimized for energy recovery, biogas quality,
+  and carbon loop integration.
+
+biomass:
+  species: Methanobrevibacter_smithii
+  strain_notes: >
+    Obligate anaerobe optimized for high methane yield. Other methanogens may include Methanosarcina,
+    Methanococcus, or co-cultures with hydrogenotrophic or acetoclastic pathways.
+
+inputs_required:
+  - carbon_substrate (e.g., acetate, formate, CO₂ + H₂)
+  - water
+  - micronutrients (e.g., iron, nickel, cobalt)
+  - buffer (optional)
+
+environmental_targets:
+  temperature_c: [35, 55]  # mesophilic to thermophilic
+  pH_range: [6.8, 7.2]
+  oxygen: none (strict anaerobe)
+  pressure_bar: [1, 3]  # sealed vessels often used
+  osmolality_tolerance: medium
+  agitation: none_or_low
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - gas_output_volume
+  - gas_composition (CH₄ %, CO₂ %, H₂S trace)
+  - substrate_consumption (e.g., acetate levels)
+  - redox_potential (optional)
+
+control_capabilities_required:
+  - temp_control
+  - gas_capture_system
+  - inert_headspace_management
+  - sampling_port
+  - feed_control (e.g., acetate dosing)
+  - optional_nutrient_dosing
+
+reaction_goals:
+  - methane_generation
+  - gas_purification_or_use
+  - closed_loop_carbon_balance
+
+notes:
+  - Prefer purified or pretreated substrates—often used downstream of hydrolysis or ABE digestion.
+  - Strict anaerobiosis is critical—O₂ exposure can be lethal.
+  - Suitable for continuous or batch operation; frequently integrated with CHP or flare systems.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

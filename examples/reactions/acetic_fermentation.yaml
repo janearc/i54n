@@ -1,0 +1,54 @@
+reaction_class: acetic_fermentation
+display_name: Acetic Acid Fermentation
+description: >
+  Aerobic oxidation of ethanol into acetic acid by acetic acid bacteria.
+  Used in vinegar production, kombucha secondary fermentation, and as a microbial preservative process.
+
+biomass:
+  species: Acetobacter_aceti
+  strain_notes: >
+    Robust acetic acid producer with tolerance to moderate ethanol levels and oxygen-rich environments.
+    Other strains may offer higher acid yields or work better in symbiosis (e.g., with kombucha SCOBYs).
+
+inputs_required:
+  - ethanol_solution (e.g., fermented wine, beer, or wash)
+  - oxygen
+  - water (optional, depending on dilution)
+
+environmental_targets:
+  temperature_c: [25, 32]
+  pH_range: [3.0, 5.0]
+  ethanol_percent_start: [5, 12]
+  oxygen: high
+  agitation: low_or_none
+  salinity: low
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - gravity
+  - abv
+  - dissolved_o2
+  - acidity (titration or inferred)
+
+control_capabilities_required:
+  - airflow_control
+  - temp_control
+  - sampling_port
+  - headspace_monitoring
+  - surface_exposure_adjustment (optional)
+
+reaction_goals:
+  - acetic_acid
+  - flavor_development
+  - ethanol_conversion
+
+notes:
+  - May form a surface film ("mother") that contributes to oxygen transfer and microbial growth.
+  - Often used as a secondary fermentation following ethanol production.
+  - Process is exothermic—heat management may be needed in large volumes.
+  - Can be accelerated using forced aeration or trickle bed reactors.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

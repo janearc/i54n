@@ -1,0 +1,55 @@
+reaction_class: batch_microbial_culture
+display_name: Batch Microbial Culture
+description: >
+  Controlled batch growth of microbial biomass in a defined nutrient medium.
+  Used for seed culture production, microbial biomass harvesting, recombinant protein expression, or pre-fermentation scale-up.
+
+biomass:
+  species: Saccharomyces_cerevisiae
+  strain_notes: >
+    Example strain for general batch culture. Can be replaced with E. coli, Lactobacillus,
+    Pseudomonas, Clostridium, fungal strains, or custom engineered organisms.
+
+inputs_required:
+  - growth_medium (e.g., YPD, LB, MRS)
+  - water
+  - carbon_source (e.g., glucose, glycerol)
+  - micronutrients
+  - buffer (optional)
+
+environmental_targets:
+  temperature_c: [20, 37]
+  pH_range: [5.5, 7.5]
+  oxygen: aerobic_or_microaerobic
+  agitation: medium
+  dwell_time_hours: [8, 48]
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - optical_density
+  - dissolved_oxygen
+  - carbon_source_depletion
+  - biomass_yield
+
+control_capabilities_required:
+  - temp_control
+  - agitation
+  - o2_injection_or_airflow
+  - nutrient_feed (optional)
+  - sampling_port
+  - optical_monitoring (optional)
+
+reaction_goals:
+  - cell_mass_production
+  - starter_culture_generation
+  - expression_of_target_compound (optional)
+
+notes:
+  - Often used as a pre-step before transfer to larger fermenters or reactors.
+  - Time and resource use are bounded—no replenishment after start.
+  - Many downstream processes rely on consistent, reproducible batch cultures for quality control.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

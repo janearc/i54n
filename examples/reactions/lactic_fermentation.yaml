@@ -1,0 +1,54 @@
+reaction_class: lactic_fermentation
+display_name: Lactic Acid Fermentation (Homo- and Heterofermentative)
+description: >
+  Anaerobic fermentation of sugars by lactic acid bacteria (LAB), primarily producing lactic acid,
+  sometimes alongside ethanol, CO₂, and other minor byproducts. Used in food preservation, probiotic production,
+  and acidification processes.
+
+biomass:
+  species: Lactobacillus_plantarum
+  strain_notes: >
+    Tolerates a wide pH range and high salinity, performs well in vegetable ferments and controlled starter cultures.
+    Other LAB species may produce CO₂ or ethanol depending on homo/heterofermentative pathways.
+
+inputs_required:
+  - glucose_or_sucrose
+  - salt (NaCl or similar)
+  - water
+  - optional_starters (if not wild fermentation)
+
+environmental_targets:
+  temperature_c: [18, 35]
+  pH_range: [3.2, 6.5]
+  salinity: [2, 8] # percent NaCl by weight
+  oxygen: low_or_none
+  osmolality_tolerance: high
+  agitation: none
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - redox_potential (optional)
+  - salinity
+  - gas_output (optional)
+
+control_capabilities_required:
+  - temp_control
+  - anaerobic_headspace
+  - sampling_port
+  - salinity_adjustment (optional)
+  - starter_injection (optional)
+
+reaction_goals:
+  - lactic_acid
+  - flavor_development
+  - microbial_stabilization
+
+notes:
+  - Fermentation is often self-limiting as pH drops.
+  - Wild fermentation benefits from observational logging, especially krausen behavior, gas release, and sedimentation.
+  - May benefit from initial salinity check and periodic pH trending to confirm stability.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

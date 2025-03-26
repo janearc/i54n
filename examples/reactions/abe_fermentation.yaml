@@ -1,0 +1,63 @@
+reaction_class: abe_fermentation
+display_name: Acetone-Butanol-Ethanol (ABE) Fermentation
+description: >
+  A mixed-acid anaerobic fermentation process using Clostridium species to convert carbohydrates
+  into acetone, butanol, and ethanol in varying ratios. Typically performed in strict anaerobic
+  environments with pH-controlled metabolic switching and high osmotic stress tolerance.
+
+biomass:
+  species: Clostridium_acetobutylicum
+  strain_notes: >
+    High-yield ABE variant, sensitive to pH shift near 5.0 for metabolic phase transition.
+    Requires heat shock pretreatment to sporulate if starting from plate.
+
+inputs_required:
+  - glucose
+  - yeast_extract
+  - ammonium_sulfate
+  - mineral_salts
+  - phosphate_buffer
+  - anaerobic_conditions
+
+environmental_targets:
+  temperature_c: [34, 37]
+  pH_range:
+    acidogenic_phase: [6.0, 6.5]
+    solventogenic_phase: [4.5, 5.2]
+  redox: strict_anaerobic
+  agitation: low_or_none
+  osmolality_tolerance: high
+  salinity: low
+  light: none
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - osmolality
+  - tds
+  - abv
+  - gas_output (H2, CO2)
+
+control_capabilities_required:
+  - temp_control
+  - anaerobic_headspace
+  - pH_modulation (acid/base addition)
+  - nutrient_feed
+  - gas_valve_control
+  - low_shear_agitation (optional)
+  - sampling_port
+
+reaction_goals:
+  - butanol
+  - acetone
+  - ethanol
+  - hydrogen (optional co-product)
+
+notes:
+  - Transition from acidogenic to solventogenic phase must be closely monitored via pH and gas output.
+  - Requires careful sterilization and pretreatment to avoid contamination and ensure sporulation.
+  - Butanol production efficiency is sensitive to osmotic shock and trace nutrient depletion.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

@@ -1,0 +1,60 @@
+reaction_class: continuous_culture
+display_name: Continuous Microbial Culture (Chemostat)
+description: >
+  A bioreaction model in which fresh medium is continuously added and culture broth is removed
+  at a fixed rate to maintain steady-state conditions. Used in industrial enzyme production,
+  biopolymer synthesis, metabolic studies, and precision fermentation.
+
+biomass:
+  species: Escherichia_coli
+  strain_notes: >
+    Example strain for continuous culture. Replaceable with yeast, Bacillus, Clostridium,
+    filamentous fungi, or engineered strains depending on application.
+
+inputs_required:
+  - sterile_growth_medium
+  - carbon_source (e.g., glucose, glycerol)
+  - oxygen_or_alternative_electron_acceptor
+  - antifoam_agent (optional)
+  - buffer
+
+environmental_targets:
+  temperature_c: [30, 37]
+  pH_range: [6.5, 7.5]
+  oxygen: aerobic
+  agitation: high
+  dilution_rate_per_hour: [0.1, 0.6]
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - dissolved_oxygen
+  - optical_density
+  - nutrient_concentration
+  - metabolite_levels
+  - biomass_yield
+  - flow_rates (inflow/outflow)
+
+control_capabilities_required:
+  - temp_control
+  - agitation
+  - sterile_medium_feed
+  - overflow_control
+  - pH_adjustment
+  - oxygenation
+  - sensor_driven_feedback_loops
+
+reaction_goals:
+  - steady_state_metabolite_production
+  - biomass_maintenance
+  - precision fermentation
+
+notes:
+  - Critical for studies on growth kinetics and metabolic flux analysis.
+  - Requires rigorous sterilization and flow control systems.
+  - Often integrated with automated sampling and downstream processing pipelines.
+  - Dilution rate must be matched precisely to growth rate to avoid washout.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

@@ -1,0 +1,57 @@
+reaction_class: anaerobic_digestion
+display_name: Anaerobic Digestion (Biogas Production)
+description: >
+  Multi-stage anaerobic microbial breakdown of organic material to produce biogas,
+  primarily methane (CH₄) and carbon dioxide (CO₂), with a residual digestate byproduct.
+  Used in waste treatment, energy generation, and carbon loop balancing.
+
+biomass:
+  species: mixed_anaerobic_consortium
+  strain_notes: >
+    Contains hydrolytic, acidogenic, acetogenic, and methanogenic organisms.
+    Process relies on stability between these microbial guilds, often sourced from sludge or cow rumen.
+
+inputs_required:
+  - organic_waste (e.g., food scraps, manure, plant biomass)
+  - water
+  - heat
+  - micronutrients (optional for yield optimization)
+
+environmental_targets:
+  temperature_c: [30, 40]  # mesophilic
+  pH_range: [6.5, 8.0]
+  osmolality_tolerance: moderate
+  oxygen: none (strictly anaerobic)
+  agitation: low_or_periodic
+  dwell_time_days: [15, 30]
+
+monitoring_metrics:
+  - temperature
+  - pH
+  - gas_output_volume
+  - gas_composition (CH₄ %, CO₂ %, H₂S trace)
+  - volatile_solids
+  - chemical_oxygen_demand (optional)
+
+control_capabilities_required:
+  - temp_control
+  - gas_capture_system
+  - inert_headspace_or_seal
+  - feedstock_maceration (optional)
+  - recirculation (optional)
+  - digestate_separation (optional)
+
+reaction_goals:
+  - methane_production
+  - waste_stabilization
+  - digestate_capture_or_use
+
+notes:
+  - Highly sensitive to shock loading or pH drift.
+  - Sulfide scrubbers may be needed for high-H₂S waste streams.
+  - Scaled systems often integrate gas compression and CHP (combined heat & power).
+  - Performance improves with pre-digestion treatments like enzymatic hydrolysis.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

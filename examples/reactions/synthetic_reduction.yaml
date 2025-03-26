@@ -1,0 +1,54 @@
+reaction_class: synthetic_reduction
+display_name: Synthetic Reduction Reaction
+description: >
+  A controlled chemical reduction process using defined catalysts and reductants to convert substrate molecules
+  to lower oxidation states. Often used in pharmaceutical synthesis, fuel refining, and industrial organic chemistry.
+
+biomass:
+  species: none
+  reaction_type: abiotic
+  catalyst: optional
+
+inputs_required:
+  - substrate (e.g., ketone, ester, alkene)
+  - reductant (e.g., hydrogen gas, NaBH4, LiAlH4)
+  - solvent (e.g., ethanol, THF, water)
+  - catalyst (e.g., Pd/C, Ni, enzyme)
+
+environmental_targets:
+  temperature_c: [0, 150]
+  pressure_bar: [1, 10]
+  pH_range: [neutral_or_ignored]
+  oxygen: inert_only
+  agitation: required
+
+monitoring_metrics:
+  - temperature
+  - pressure
+  - reaction_time
+  - tds (if aqueous)
+  - redox_potential (if applicable)
+  - gas_flow (hydrogen use or release)
+
+control_capabilities_required:
+  - temp_control
+  - pressure_regulation
+  - inert_gas_injection
+  - agitation
+  - catalyst_feed (optional)
+  - sampling_port
+  - reaction_quench (optional)
+
+reaction_goals:
+  - product_reduction (e.g., alcohol, alkane, amine)
+  - precursor_transformation
+  - solvent_recovery (optional)
+
+notes:
+  - Reactions may be exothermic; thermal control and pressure relief valves required.
+  - Inert atmosphere (argon or nitrogen) critical for safety and yield in most systems.
+  - Catalyst recovery or filtration may be needed post-process.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25
