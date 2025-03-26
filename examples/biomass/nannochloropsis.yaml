@@ -15,8 +15,11 @@ metabolic_class: phototrophic
 reaction_type: photosynthesis
 preferred_reactors:
   - shallow_pan
-  - open_ocean_membrane
   - flat_plate
+  - open_ocean_membrane
+
+biomass_properties_ref: biomass_properties/nannochloropsis.yaml
+bioreactor_type_ref: bioreactor/arc_shallow_15000L_seawater.yaml
 
 growth_parameters:
   temperature_c_optimal: 25

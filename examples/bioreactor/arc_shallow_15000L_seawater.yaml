@@ -64,6 +64,9 @@ instrumentation:
     - co2_saturation
   sample_resolution_minutes: 2
 
+biomass_properties_ref: examples/biomass/nannochloropsis.yaml  # Referencing the Nannochloropsis biomass
+bioreactor_type_ref: examples/bioreactor/arc_shallow_15000L_seawater.yaml  # Refers to the design of the bioreactor
+
 network:
   onboard_computer:
     type: sbc_linux
