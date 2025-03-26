@@ -22,3 +22,15 @@ preferred_biomass:
     carbon_nitrogen_ratio: 30
     typical_pathogens: [clostridium, streptococcus]
     reference_file: ../biomass/horse_manure.yaml
+
+
+  - id: mixed_agricultural_manure
+    display_name: mixed agricultural manure
+    description: >
+      general agricultural mixed manure
+    origin: mixed
+    moisture_content_pct: 65
+    volatile_solids_pct: 70
+    carbon_nitrogen_ratio: 30
+    typical_pathogens: [clostridium, streptococcus]
+    reference_file: ../biomass/mixed_manure.yaml
