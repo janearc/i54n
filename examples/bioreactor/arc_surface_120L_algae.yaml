@@ -1,0 +1,78 @@
+id: bioreactor_120l_surface_algae_v1
+display_name: ARC Surface-Area Optimized Algae Bioreactor (120L)
+description: >
+  A shallow, wide-format bioreactor optimized for phototrophic growth with high lux exposure and surface area-to-volume ratio.
+  Designed for efficient cultivation of microalgae such as Spirulina and Chlorella under controlled environmental conditions.
+version: 1.0
+
+vessel:
+  shape: shallow_pan
+  dimensions_cm: [200, 100, 10]  # LxWxH
+  volume_l: 120
+  drain:
+    type: gravity
+    powered: false
+    metered: true
+  construction:
+    material: borosilicate_glass
+    thickness_mm: 10
+    double_wall: true
+    jacketed: true
+    bracing:
+      external: true
+      mounting: table_mount
+
+access:
+  feed_ports:
+    - name: growth_media
+      type: fluid
+    - name: buffer_solution
+      type: fluid
+  co2_port: true
+  oxygenation_port: true
+  sample_port: true
+  harvest_port: true
+  sanitation:
+    spray_nozzles_internal: true
+
+agitation:
+  circulation_pump: true
+  paddle_agitation: true
+
+visual_inspection:
+  cameras:
+    count: 1
+    modes: [time_lapse, frame_capture]
+  viewport: true
+  led_lighting:
+    - position: overhead
+      spectrum: [red, blue, white]
+      adjustable_intensity: true
+  lux_sensor: true
+
+instrumentation:
+  sensors:
+    - temperature
+    - pH
+    - lux
+    - turbidity
+    - dissolved_oxygen
+    - co2_saturation
+  sample_resolution_minutes: 2
+
+network:
+  onboard_computer:
+    type: sbc_linux
+    connectivity: [cat6, wifi]
+    display: minimal_lcd
+    control_interface: cli_rpc
+    logging_output: kafka_stream
+    dashboard: grafana_compatible
+
+mounting:
+  floor_mounted: true
+  automation_ready: true
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

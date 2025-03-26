@@ -1,0 +1,63 @@
+id: nannochloropsis_sp
+display_name: Nannochloropsis sp.
+description: >
+  A genus of microalgae known for exceptionally high lipid content and rapid phototrophic growth.
+  Ideal for ocean-based biofuel production due to its resilience, salinity tolerance, and minimal nutrient needs.
+
+classification:
+  kingdom: Chromista
+  phylum: Ochrophyta
+  class: Eustigmatophyceae
+  genus: Nannochloropsis
+  species: sp.
+
+metabolic_class: phototrophic
+reaction_type: photosynthesis
+preferred_reactors:
+  - shallow_pan
+  - open_ocean_membrane
+  - flat_plate
+
+growth_parameters:
+  temperature_c_optimal: 25
+  temperature_c_range: [20, 30]
+  pH_optimal: 8.5
+  pH_range: [7.5, 9.5]
+  salinity_g_per_l: [20, 40]
+  light_intensity_lux: [18000, 65000]
+  light_spectrum_preference: [blue, red, white]
+  co2_concentration_ppm: [300, 2000]
+  doubling_time_hours: 24
+
+nutrient_requirements:
+  media: f2_modified
+  nitrogen_source: nitrate
+  phosphorus_source: phosphate
+  trace_metals: yes
+
+monitoring_recommendations:
+  - temperature
+  - pH
+  - turbidity
+  - lux
+  - dissolved_oxygen
+  - biomass_density
+
+extraction_methods:
+  - centrifugation
+  - flocculation
+  - membrane_separation
+  - supercritical_extraction
+
+applications:
+  - biofuel_lipid_feedstock
+  - aquaculture_feed
+  - nutraceuticals
+  - carbon_capture
+
+safety_notes: >
+  Generally regarded as safe. Sensitive to predator microorganisms if grown in open systems.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

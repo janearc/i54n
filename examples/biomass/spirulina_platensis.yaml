@@ -1,0 +1,63 @@
+id: spirulina_platensis
+display_name: Spirulina platensis (Arthrospira platensis)
+description: >
+  A filamentous cyanobacterium known for high protein content, fast growth rate, and photosynthetic efficiency.
+  Used in food supplements, biofuel research, and oxygen-rich water purification systems.
+
+classification:
+  kingdom: Bacteria
+  phylum: Cyanobacteria
+  genus: Arthrospira
+  species: platensis
+
+metabolic_class: phototrophic
+reaction_type: photosynthesis
+preferred_reactors:
+  - shallow_pan
+  - flat_plate
+  - tubular
+
+growth_parameters:
+  temperature_c_optimal: 35
+  temperature_c_range: [25, 38]
+  pH_optimal: 9.5
+  pH_range: [8.5, 10.5]
+  salinity_g_per_l: [10, 40]
+  light_intensity_lux: [15000, 60000]
+  light_spectrum_preference: [red, blue, white]
+  co2_concentration_ppm: [300, 2000]
+  doubling_time_hours: 24
+
+nutrient_requirements:
+  media: zarrouk
+  nitrogen_source: nitrate
+  phosphorus_source: phosphate
+  trace_metals: yes
+  vitamins: optional
+
+monitoring_recommendations:
+  - temperature
+  - pH
+  - lux
+  - turbidity
+  - dissolved_oxygen
+  - co2_saturation
+
+extraction_methods:
+  - flocculation
+  - filtration
+  - centrifugation
+  - spray_drying
+
+applications:
+  - nutritional_supplements
+  - biomass_biofuel
+  - wastewater_treatment
+  - carbon_capture
+
+safety_notes: >
+  Non-toxic and widely regarded as safe (GRAS) for food and industrial use. Susceptible to contamination from other microbes if pH not maintained.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

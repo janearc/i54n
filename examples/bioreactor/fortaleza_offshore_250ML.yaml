@@ -1,0 +1,92 @@
+id: bioreactor_250ml_fortaleza_offshore
+display_name: Fortaleza Great Offshore Algal Bioreactor (250,000,000L)
+description: >
+  A floating, modular 250 million-liter bioreactor moored off the coast of Fortaleza, Brazil.
+  Designed to maximize lux exposure, wave-buffered phototrophic surface area, and scalable lipid production for climate remediation and biofuel generation.
+
+version: 1.0
+
+vessel:
+  shape: modular_membrane_array
+  geometry:
+    total_area_m2: 500000   # spread across modular shallow floats
+    max_depth_m: 0.5
+  volume_l: 250000000
+  drain:
+    type: membrane_retraction_and_funneling
+    powered: true
+    metered: true
+  construction:
+    material: uv_stabilized_flexible_polymer
+    double_wall: false
+    jacketed: ocean_cooled
+    bracing:
+      external: wave-damped flotation grid
+      mounting: moored_buoy_system
+
+access:
+  feed_ports:
+    - name: nutrient_injection_nodes
+      type: distributed
+    - name: co2_inlet
+      type: gas
+  sample_ports: distributed_auto_sampler
+  sanitation:
+    uv_flush_cycles: true
+    chemical_flush_nodes: true
+
+agitation:
+  passive_wave_damping: true
+  internal_circulation_channels: true
+  active_microbubble_distribution: true
+
+visual_inspection:
+  cameras:
+    count: 40
+    modes: [drone_visual, onboard_frame, edge_monitoring]
+  viewport: none
+  led_lighting:
+    - position: sub_surface_net
+      spectrum: full_spectrum
+      operation: supplemental_only
+  lux_sensor: multi-array
+  drone_access: autonomous
+
+instrumentation:
+  sensors:
+    - pH
+    - osmolality
+    - temperature
+    - tds
+    - lux
+    - turbidity
+    - salinity
+    - lipid_concentration_estimate
+    - biomass_density
+    - co2_saturation
+  sample_resolution_minutes: 5
+
+network:
+  onboard_computer:
+    type: hardened_sbc_cluster
+    connectivity: [starlink, lte_backup, lo_ra_mesh]
+    display: remote_only
+    control_interface: api_rpc
+    logging_output: kafka_stream
+    dashboard: grafana_clustered
+    telemetry_health_reporting: encrypted
+
+mounting:
+  open_ocean_moored: true
+  anchored_grid: yes
+  emergency_buoyancy_modules: true
+  extreme_weather_mode: auto_contract
+
+energy:
+  solar_panels: integrated
+  wave_power: supplemental
+  energy_storage: lithium_saltwater_safe_cells
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

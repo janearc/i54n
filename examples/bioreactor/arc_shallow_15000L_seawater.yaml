@@ -1,0 +1,84 @@
+id: bioreactor_15000l_phototrophic_shallow_v1
+display_name: ARC Shallow Phototrophic Bioreactor (15,000L, Seawater)
+description: >
+  A 15,000-liter, shallow-depth bioreactor designed for high-lux, marine phototrophic growth.
+  Ideal for microalgae like Nannochloropsis, fed with filtered seawater from Dutch polders and optimized for field-scale research and yield monitoring.
+version: 1.0
+
+vessel:
+  shape: shallow_tray
+  dimensions_cm: [1000, 1500, 10]  # LxWxH = 15,000L
+  volume_l: 15000
+  drain:
+    type: gravity
+    powered: false
+    metered: true
+  construction:
+    material: marine_polycarbonate
+    thickness_mm: 12
+    double_wall: false
+    jacketed: optional
+    bracing:
+      external: true
+      mounting: floor_pad_mount
+
+access:
+  feed_ports:
+    - name: seawater_inlet
+      type: fluid
+    - name: nutrient_concentrate
+      type: fluid
+    - name: buffer_solution
+      type: fluid
+  co2_port: true
+  oxygenation_port: false
+  sample_port: true
+  harvest_port: true
+  sanitation:
+    spray_nozzles_internal: true
+
+agitation:
+  circulation_pump: true
+  paddle_agitation: true
+  wave_baffle_damping: true
+
+visual_inspection:
+  cameras:
+    count: 1
+    modes: [frame_capture]
+  viewport: true
+  led_lighting:
+    - position: overhead
+      spectrum: [red, blue, white]
+      adjustable_intensity: true
+  lux_sensor: true
+
+instrumentation:
+  sensors:
+    - temperature
+    - pH
+    - lux
+    - turbidity
+    - dissolved_oxygen
+    - salinity
+    - co2_saturation
+  sample_resolution_minutes: 2
+
+network:
+  onboard_computer:
+    type: sbc_linux
+    connectivity: [cat6, wifi]
+    display: minimal_lcd
+    control_interface: cli_rpc
+    logging_output: kafka_stream
+    dashboard: grafana_compatible
+
+mounting:
+  floor_mounted: true
+  automation_ready: true
+  outdoor_ready: true
+  marine_environment_certified: true
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25

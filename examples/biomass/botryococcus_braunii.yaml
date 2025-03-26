@@ -1,0 +1,61 @@
+id: botryococcus_braunii
+display_name: Botryococcus braunii
+description: >
+  A green microalga with exceptionally high hydrocarbon content—up to 60% of its dry mass.
+  Slow-growing but highly valuable for synthetic fuels and carbon sequestration.
+
+classification:
+  kingdom: Plantae
+  phylum: Chlorophyta
+  class: Trebouxiophyceae
+  genus: Botryococcus
+  species: braunii
+
+metabolic_class: phototrophic
+reaction_type: photosynthesis
+preferred_reactors:
+  - shallow_pan
+  - photobioreactor
+  - open_ocean_membrane
+
+growth_parameters:
+  temperature_c_optimal: 23
+  temperature_c_range: [18, 28]
+  pH_optimal: 7.5
+  pH_range: [6.5, 8.5]
+  salinity_g_per_l: [0, 20]
+  light_intensity_lux: [10000, 50000]
+  light_spectrum_preference: [full_spectrum]
+  co2_concentration_ppm: [400, 1500]
+  doubling_time_hours: 96
+
+nutrient_requirements:
+  media: BBM (Bold's Basal Medium)
+  nitrogen_source: urea_or_nitrate
+  phosphorus_source: phosphate
+  trace_metals: yes
+
+monitoring_recommendations:
+  - temperature
+  - pH
+  - lux
+  - viscosity
+  - biomass_thickness
+
+extraction_methods:
+  - filtration
+  - gravity_settling
+  - lipid_solvent_extraction
+
+applications:
+  - synthetic_fuel_precursors
+  - long_chain_hydrocarbons
+  - climate_tech
+  - industrial_lubricants
+
+safety_notes: >
+  No known hazards; biosecure, but slow-growing and vulnerable to contamination.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25
