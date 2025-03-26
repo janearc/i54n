@@ -1,0 +1,44 @@
+id: mixed_livestock_manure
+display_name: Mixed Livestock Manure
+description: >
+  A representative aggregate of common livestock manures (poultry, hog, equine, bovine),
+  defined for use in large-scale anaerobic digestion, composting, and biofuel yield modeling.
+
+biomass_components:
+  - poultry_manure
+  - hog_manure
+  - equine_manure
+  - cow_manure
+
+average_composition_percent:
+  total_solids: 18.0
+  volatile_solids: 13.5
+  moisture: 82.0
+  nitrogen: 0.85
+  phosphorus: 0.45
+  potassium: 0.55
+  fiber: 4.2
+
+energy_yield:
+  methane_m3_per_kg_vs: 0.32
+  biogas_m3_per_kg_vs: 0.60
+  calorific_value_mj_per_kg: 18.2
+
+pathogen_profile:
+  typical_bsl: 2
+  treatment_required: true
+  recommended_treatment: thermophilic_digestion
+
+handling_characteristics:
+  state: slurry_or_semi-solid
+  odor_level: high
+  corrosivity: moderate
+  recommended_storage: covered_lagoon_or_tank
+
+regulatory_notes: >
+  Subject to agricultural runoff and pathogen containment standards in most jurisdictions.
+  Manure blending operations may require odor mitigation and pathogen load assessment.
+
+license: CC-BY-SA-4.0
+contributor: janearc
+date_created: 2025-03-25
